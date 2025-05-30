@@ -22,7 +22,7 @@ export function Experience() {
     {
       title: "Frontend Developer",
       company: "Rheel Estate Limited",
-      period: "January 2025 - April 2025",
+      period: "February 2025 - April 2025",
       description:
         "Led the frontend development of a real estate platform, creating both the main website and an admin panel for managing properties. Worked closely with the backend team to integrate APIs and implement real-time features. Improved site performance and SEO metrics significantly.",
       technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "REST APIs"],
