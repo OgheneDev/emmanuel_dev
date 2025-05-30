@@ -17,9 +17,9 @@ export function Projects() {
     {
       title: "E-Commerce Platform",
       description:
-        "A full-stack e-commerce solution with React, Next.js, and Stripe integration. Features include product catalog, shopping cart, and secure checkout.",
+        "A full-stack e-commerce solution with React.js and Firebase integration. Features include product catalog, shopping cart, and secure checkout.",
       image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748603305/Annotation_2025-05-30_120753_mpkdoz.png",
-      technologies: ["Next.js", "React", "TypeScript", "Stripe", "Tailwind CSS"],
+      technologies: ["React", "JavaScript", "TailwindCSS", "Firebase", "Redux", ],
       liveUrl: "https://technest-two.vercel.app/",
       githubUrl: "https://github.com/OgheneDev/technest-frontend",
     },
@@ -31,15 +31,6 @@ export function Projects() {
       technologies: ["Next.js", "Typescript", "TailwindCSS", "Node.js", "Express.js", "Nodemailer", "MongoDB"],
       liveUrl: "https://task-app-frontend-rho.vercel.app/",
       githubUrl: "https://github.com/OgheneDev/task-app-frontend",
-    },
-    {
-      title: "Weather Dashboard",
-      description:
-        "A responsive weather dashboard that displays current conditions and forecasts with beautiful data visualizations and location-based services.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Vue.js", "Chart.js", "OpenWeather API", "CSS3"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
     },
   ]
 

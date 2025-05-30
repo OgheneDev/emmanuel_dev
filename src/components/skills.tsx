@@ -2,6 +2,7 @@
 
 import { Badge } from "./ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Palette, Database, Hammer } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
@@ -14,19 +15,19 @@ export function Skills() {
     {
       title: "Frontend Technologies",
       skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Redux", "Zustand"],
-      icon: "🎨",
+      icon: Palette,
       gradient: "from-blue-400 to-cyan-400"
     },
     {
       title: "Backend & Database",
       skills: ["Node.js", "Express", "MongoDB", "Firebase", "Rest APIs"],
-      icon: "⚡",
+      icon: Database,
       gradient: "from-purple-400 to-blue-400"
     },
     {
       title: "Tools & Workflow",
       skills: ["Git", "GitHub", "VS Code", "Figma", "Vite", "npm/yarn"],
-      icon: "🛠️",
+      icon: Hammer,
       gradient: "from-cyan-400 to-purple-400"
     },
   ]
@@ -119,16 +120,16 @@ export function Skills() {
                 <Card className="h-full bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-gray-600 cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10">
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-3 mb-2">
-                      <motion.span 
-                        className="text-2xl"
+                      <motion.div 
+                        className={`p-2 rounded-lg bg-gradient-to-r ${category.gradient}`}
                         whileHover={{ 
                           scale: 1.2,
                           rotate: 10
                         }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        {category.icon}
-                      </motion.span>
+                        <category.icon className="h-5 w-5 text-white" />
+                      </motion.div>
                       <CardTitle className={`text-lg font-semibold bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent group-hover:from-white group-hover:to-gray-200 transition-all duration-300`}>
                         {category.title}
                       </CardTitle>

@@ -213,7 +213,7 @@ export function About() {
                           className={`p-3 rounded-lg ${feature.bgColor} ${feature.borderColor} border group-hover:scale-110 transition-transform duration-300`}
                           whileHover={{ rotate: 5 }}
                         >
-                          <feature.icon className={`h-6 w-6 bg-gradient-to-r ${feature.gradient} bg-clip-text`} style={{ color: 'transparent', WebkitBackgroundClip: 'text' }} />
+                          <feature.icon className={`h-6 w-6 text-blue-400`} />
                         </motion.div>
                         <div className="flex-1">
                           <motion.h3 

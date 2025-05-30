@@ -303,7 +303,7 @@ function createAmazingApps() {
                       <span className="text-gray-500">// Hello, I'm Emmanuel</span>{'\n'}
                       <span className="text-blue-400">const</span> <span className="text-yellow-300">developer</span> <span className="text-white">=</span> <span className="text-white">{'{'}</span>{'\n'}
                       {'  '}<span className="text-red-400">name</span><span className="text-white">:</span> <span className="text-green-400">'Emmanuel'</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Full Stack'</span><span className="text-white">,</span>{'\n'}
+                      {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Frontend'</span><span className="text-white">,</span>{'\n'}
                       {'  '}<span className="text-red-400">experience</span><span className="text-white">:</span> <span className="text-purple-400">3</span><span className="text-white">,</span>{'\n'}
                       <span className="text-white">{'};'}</span>
                     </code>

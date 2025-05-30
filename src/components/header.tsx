@@ -52,6 +52,16 @@ export function Header() {
     open: { opacity: 1, x: 0 },
   }
 
+  const handleResumeClick = () => {
+    // Trigger file download
+    const link = document.createElement("a")
+    link.href = "/assets/emmanuel-resume.pdf"
+    link.download = "emmanuel-resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -70,8 +80,8 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Button className="bg-blue-600 hover:bg-blue-700 glow">
-            <Link href="">Resume</Link>
+          <Button className="bg-blue-600 hover:bg-blue-700 glow" onClick={handleResumeClick}>
+            Download Resume
           </Button>
         </div>
 
@@ -145,16 +155,16 @@ export function Header() {
                 </motion.div>
 
                 {/* Bottom Action */}
-                <motion.div
-                  variants={itemVariants}
-                  className="p-4 border-t border-gray-800"
-                >
+                <motion.div variants={itemVariants} className="p-4 border-t border-gray-800">
                   <Button
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 
                              hover:from-blue-700 hover:to-purple-700 py-6 text-lg"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      handleResumeClick()
+                    }}
                   >
-                    <Link href="">Download Resume</Link>
+                    Download Resume
                   </Button>
                 </motion.div>
               </div>
