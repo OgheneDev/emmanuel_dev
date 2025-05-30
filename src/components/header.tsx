@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,6 +25,32 @@ export function Header() {
     { href: "#experience", label: "Experience" },
     { href: "#contact", label: "Contact" },
   ]
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      x: "100%",
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.07,
+        delayChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    closed: { opacity: 0, x: 20 },
+    open: { opacity: 1, x: 0 },
+  }
 
   return (
     <header
@@ -59,27 +86,81 @@ export function Header() {
         </Button>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md border-b border-gray-700 md:hidden">
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block text-gray-300 hover:text-blue-400 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+              className="fixed inset-0 bg-gray-950/95 backdrop-blur-md z-50 md:hidden"
+            >
+              <div className="h-full flex flex-col">
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-gray-800">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Emmanuel
+                  </span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-gray-300 hover:text-white"
+                  >
+                    <X className="h-6 w-6" />
+                  </Button>
+                </div>
+
+                {/* Navigation Links */}
+                <motion.div className="flex-1 overflow-y-auto py-8 px-4">
+                  <div className="space-y-1">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.href}
+                        variants={itemVariants}
+                        className="border-b border-gray-800/50 last:border-0"
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block py-4 text-lg font-medium text-gray-300 hover:text-white transition-colors"
+                        >
+                          <motion.div
+                            whileHover={{ x: 10 }}
+                            className="flex items-center justify-between"
+                          >
+                            <span>{item.label}</span>
+                            <motion.span
+                              initial={{ opacity: 0, x: -10 }}
+                              whileHover={{ opacity: 1, x: 0 }}
+                              className="text-blue-400"
+                            >
+                              &rarr;
+                            </motion.span>
+                          </motion.div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Bottom Action */}
+                <motion.div
+                  variants={itemVariants}
+                  className="p-4 border-t border-gray-800"
                 >
-                  {item.label}
-                </Link>
-              ))}
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                <Link href="" onClick={() => setIsMenuOpen(false)}>
-                  Resume
-                </Link>
-              </Button>
-            </div>
-          </div>
-        )}
+                  <Button
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 
+                             hover:from-blue-700 hover:to-purple-700 py-6 text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Link href="">Download Resume</Link>
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   )
