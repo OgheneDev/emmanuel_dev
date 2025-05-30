@@ -243,8 +243,131 @@ function createAmazingApps() {
           </motion.div>
         </div>
 
-        {/* Mobile Layout */}
-        <div className="lg:hidden max-w-4xl mx-auto text-center">
+        {/* Tablet Layout */}
+        <div className="hidden md:block lg:hidden max-w-4xl mx-auto">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-10"
+          >
+            {/* Tablet Header */}
+            <div className="text-center mb-8">
+              <div className="h-16 flex items-center justify-center mb-6">
+                <motion.h1 
+                  className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {displayedText}
+                  <motion.span
+                    className="inline-block w-1 h-10 bg-blue-400 ml-1"
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                  />
+                </motion.h1>
+              </div>
+              
+              <motion.div variants={itemVariants} className="space-y-4 max-w-2xl mx-auto">
+                <h2 className="text-2xl font-semibold text-white">
+                  I build things for the web
+                </h2>
+                <p className="text-lg text-gray-300 leading-relaxed px-6">
+                  I build sleek, high-performance{" "}
+                  <span className="text-blue-400 font-semibold">web apps</span> with{" "}
+                  <span className="text-purple-400 font-semibold">modern technologies</span>.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Tablet Code Editor */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-10"
+            >
+              <motion.div
+                className="relative mx-auto max-w-2xl"
+                whileHover={{ 
+                  scale: 1.02,
+                  rotateY: 5,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <div className="bg-gray-900 rounded-xl border border-gray-700 shadow-2xl overflow-hidden">
+                  {/* Title Bar */}
+                  <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <span className="text-gray-400 text-sm font-mono">portfolio.tsx</span>
+                  </div>
+                  
+                  {/* Code Content */}
+                  <div className="p-4 font-mono text-sm leading-relaxed">
+                    <pre className="text-gray-300">
+                      <code>
+                        <span className="text-gray-500">// Hello, I'm Emmanuel</span>{'\n'}
+                        <span className="text-blue-400">const</span> <span className="text-yellow-300">developer</span> <span className="text-white">=</span> <span className="text-white">{'{'}</span>{'\n'}
+                        {'  '}<span className="text-red-400">name</span><span className="text-white">:</span> <span className="text-green-400">'Emmanuel'</span><span className="text-white">,</span>{'\n'}
+                        {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Frontend Developer'</span><span className="text-white">,</span>{'\n'}
+                        {'  '}<span className="text-red-400">experience</span><span className="text-white">:</span> <span className="text-purple-400">3</span><span className="text-white">,</span>{'\n'}
+                        {'  '}<span className="text-red-400">skills</span><span className="text-white">:</span> <span className="text-white">[</span>{'\n'}
+                        {'    '}<span className="text-green-400">'React'</span><span className="text-white">,</span> <span className="text-green-400">'Next.js'</span><span className="text-white">,</span> <span className="text-green-400">'Node.js'</span>{'\n'}
+                        {'    '}<span className="text-green-400">'TypeScript'</span><span className="text-white">,</span> <span className="text-green-400">'Express'</span>{'\n'}
+                        {'  '}<span className="text-white">],</span>{'\n'}
+                        <span className="text-white">{'};'}</span>{'\n\n'}
+                        <span className="text-blue-400">function</span> <span className="text-yellow-300">createAmazingApps</span><span className="text-white">() {'{'}</span>{'\n'}
+                        {'  '}<span className="text-blue-400">return</span> <span className="text-yellow-300">developer</span><span className="text-white">.</span><span className="text-yellow-300">skills</span><span className="text-white">.</span><span className="text-blue-400">map</span><span className="text-white">(</span><span className="text-yellow-300">magic</span><span className="text-white">) =&gt; {'{'}</span>{'\n'}
+                        {'    '}<span className="text-gray-500">// Building something amazing...</span>{'\n'}
+                        {'  '}<span className="text-white">{'});'}</span>{'\n'}
+                        <span className="text-white">{'}'}</span>
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Tablet Actions */}
+            <motion.div variants={itemVariants} className="flex flex-row justify-center gap-4 mb-8">
+              <Button size="lg" className="glow bg-blue-600 hover:bg-blue-700">
+                <Link href="#projects">View My Work</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
+              >
+                <Link href="#contact" className="flex items-center">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Get In Touch
+                </Link>
+              </Button>
+            </motion.div>
+
+            {/* Tablet Social Links */}
+            <motion.div variants={itemVariants} className="flex justify-center space-x-8">
+              <Link href="https://github.com/OgheneDev" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                <Github className="h-6 w-6" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link href="https://www.linkedin.com/in/emmanuel-oghene-0242182ab" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                <Linkedin className="h-6 w-6" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
+              <Link href="mailto:emmanueloghene72@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                <Mail className="h-6 w-6" />
+                <span className="sr-only">Email</span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Mobile Layout - Update visibility classes */}
+        <div className="md:hidden max-w-4xl mx-auto text-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"

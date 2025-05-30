@@ -74,7 +74,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="text-gray-300 hover:text-blue-400 transition-colors">
               {item.label}
@@ -89,7 +89,7 @@ export function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden text-gray-300"
+          className="lg:hidden text-gray-300"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -179,12 +179,3 @@ export function Header() {
     </header>
   )
 }
-
-// Add this CSS to your globals.css file:
-// .hide-scrollbar::-webkit-scrollbar {
-//   display: none;
-// }
-// .hide-scrollbar {
-//   -ms-overflow-style: none;
-//   scrollbar-width: none;
-// }
