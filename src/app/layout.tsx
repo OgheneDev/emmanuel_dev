@@ -6,13 +6,13 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Frontend Developer Portfolio",
-  description: "Modern web portfolio showcasing frontend development skills and projects",
+  title: "Oghene Emmanuel - Frontend Developer",
+  description: "Portfolio Website of Oghene Emmanuel showcasing frontend development skills and projects",
   keywords: "frontend developer, web developer, React, Next.js, portfolio",
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "Oghene Emmanuel" }],
   openGraph: {
-    title: "Frontend Developer Portfolio",
-    description: "Modern web portfolio showcasing frontend development skills and projects",
+    title: "Oghene Emmanuel - Frontend Developer",
+    description: "Portfolio Website of Oghene Emmanuel showcasing frontend development skills and projects",
     type: "website",
   },
 }
