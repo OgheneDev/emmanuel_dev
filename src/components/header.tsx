@@ -103,11 +103,12 @@ export function Header() {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed inset-0 bg-gray-950/95 backdrop-blur-md z-50 md:hidden"
+              className="fixed inset-0 min-h-screen overflow-hidden bg-gray-950/95 backdrop-blur-md z-[100]"
+              style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
             >
-              <div className="h-full flex flex-col">
+              <div className="h-[100dvh] flex flex-col overflow-hidden">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-800">
+                <div className="flex items-center justify-between p-4 border-b border-gray-800 bg-gray-950/80 backdrop-blur-md">
                   <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                     Emmanuel
                   </span>
@@ -122,7 +123,7 @@ export function Header() {
                 </div>
 
                 {/* Navigation Links */}
-                <motion.div className="flex-1 overflow-y-auto py-8 px-4">
+                <motion.div className="flex-1 overflow-y-auto py-8 px-4 hide-scrollbar">
                   <div className="space-y-1">
                     {navItems.map((item, index) => (
                       <motion.div
@@ -155,7 +156,10 @@ export function Header() {
                 </motion.div>
 
                 {/* Bottom Action */}
-                <motion.div variants={itemVariants} className="p-4 border-t border-gray-800">
+                <motion.div 
+                  variants={itemVariants} 
+                  className="p-4 border-t border-gray-800 bg-gray-950/80 backdrop-blur-md"
+                >
                   <Button
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 
                              hover:from-blue-700 hover:to-purple-700 py-6 text-lg"
@@ -175,3 +179,12 @@ export function Header() {
     </header>
   )
 }
+
+// Add this CSS to your globals.css file:
+// .hide-scrollbar::-webkit-scrollbar {
+//   display: none;
+// }
+// .hide-scrollbar {
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+// }

@@ -15,8 +15,8 @@ export function Experience() {
       company: "Migho Invest Limited",
       period: "June 2024 - September 2024",
       description:
-        "Collaborated with a backend developer and UI/UX designer to build a comprehensive investment platform. Developed both the main website and an admin dashboard using React and Next.js, implementing responsive designs and complex data visualizations.",
-      technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Redux", "Chart.js"],
+        "Collaborated with a backend developer and UI/UX designer to build a comprehensive investment platform. Developed both the main website and an admin dashboard using React.js, implementing responsive designs and complex data visualizations.",
+      technologies: ["React", "JavaScript", "TailwindCSS", "GitHub Actions", "REST APIs", "Framer Motion"],
       gradient: "from-blue-400 to-purple-400",
     },
     {
@@ -24,7 +24,7 @@ export function Experience() {
       company: "Rheel Estate Limited",
       period: "January 2025 - April 2025",
       description:
-        "Led the frontend development of a real estate platform, creating both the main application and a stunning landing page. Worked closely with the backend team to integrate APIs and implement real-time features. Improved site performance and SEO metrics significantly.",
+        "Led the frontend development of a real estate platform, creating both the main website and an admin panel for managing properties. Worked closely with the backend team to integrate APIs and implement real-time features. Improved site performance and SEO metrics significantly.",
       technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "REST APIs"],
       gradient: "from-purple-400 to-cyan-400",
     },
