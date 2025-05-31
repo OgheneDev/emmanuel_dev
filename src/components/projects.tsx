@@ -93,7 +93,7 @@ export function Projects() {
                 whileHover={{ y: -5 }}
                 className="group"
               >
-                <Card className="overflow-hidden h-[500px] cursor-pointer bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500/20 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10">
+                <Card className="overflow-hidden md:h-[500px] cursor-pointer bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500/20 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10">
                   <motion.div 
                     className="relative h-48 overflow-hidden"
                     whileHover={{ scale: 1.05 }}
