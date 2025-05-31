@@ -20,7 +20,7 @@ export function Experience() {
       gradient: "from-blue-400 to-purple-400",
     },
     {
-      title: "Frontend Developer",
+      title: "Freelance Frontend Developer",
       company: "Rheel Estate Limited",
       period: "February 2025 - April 2025",
       description:

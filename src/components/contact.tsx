@@ -7,6 +7,7 @@ import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Mail, MapPin, Phone, Loader2 } from "lucide-react"
 import { motion, useInView } from "framer-motion"
+import Swal from "sweetalert2"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -37,10 +38,18 @@ export function Contact() {
 
       // Reset form
       setFormData({ name: "", email: "", message: "" })
-      alert('Message sent successfully!')
+      Swal.fire({
+        title: "Success!",
+        text: "Message sent successfully!",
+        icon: "success"
+      });
     } catch (error) {
       console.error('Error:', error)
-      alert('Failed to send message. Please try again.')
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to send your message. Please try again later.",
+        icon: "error"
+      });
     } finally {
       setIsLoading(false)
     }
