@@ -6,6 +6,7 @@ import { Palette, Database, Hammer } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import Link from "next/link"
 
 export function Skills() {
   const ref = useRef(null)
@@ -217,16 +218,18 @@ export function Skills() {
             <p className="text-gray-300 text-lg mb-6">
               Ready to work together? Let's build something amazing!
             </p>
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-            >
-              Get In Touch
-            </motion.button>
+            <Link href="#contact">
+              <motion.button
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+              >
+                Get In Touch
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

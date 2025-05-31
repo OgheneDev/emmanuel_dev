@@ -101,12 +101,11 @@ function createAmazingApps() {
                 I build things for the web
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-lg">
-  I build sleek, high-performance{" "}
-  <span className="text-blue-400 font-semibold">web apps</span> for modern{" "}
-  <span className="text-purple-400 font-semibold">businesses</span> and{" "}
-  <span className="text-cyan-400 font-semibold">organizations</span>. With 3 years of frontend experience in the JavaScript ecosystem, I bring ideas to life with clean, efficient, and user-focused solutions.
-</p>
-
+                I build sleek, high-performance{" "}
+                <span className="text-blue-400 font-semibold">web apps</span> for modern{" "}
+                <span className="text-purple-400 font-semibold">businesses</span> and{" "}
+                <span className="text-cyan-400 font-semibold">organizations</span>. With 3 years of frontend experience in the JavaScript ecosystem, I bring ideas to life with clean, efficient, and user-focused solutions.
+              </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-4">
@@ -178,7 +177,7 @@ function createAmazingApps() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               {/* Code Editor Window */}
-              <div className="bg-gray-900 rounded-xl border border-gray-700 shadow-2xl overflow-hidden max-w-md w-full">
+              <div className="bg-gray-900 rounded-xl border border-gray-700 shadow-2xl overflow-hidden w-[600px]">
                 {/* Title Bar */}
                 <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
                   <div className="flex space-x-2">

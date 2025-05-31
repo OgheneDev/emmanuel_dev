@@ -38,10 +38,10 @@ export function About() {
   ]
 
   const stats = [
-    { icon: Heart, value: "100+", label: "Happy Clients", color: "text-red-400" },
+    { icon: Heart, value: "10+", label: "Happy Clients", color: "text-red-400" },
     { icon: Code, value: "25+", label: "Technologies", color: "text-blue-400" },
-    { icon: Coffee, value: "1000+", label: "Cups of Coffee", color: "text-yellow-400" },
-    { icon: Users, value: "15+", label: "Team Projects", color: "text-green-400" }
+    { icon: Coffee, value: "100+", label: "Cups of Coffee", color: "text-yellow-400" },
+    { icon: Users, value: "10+", label: "Team Projects", color: "text-green-400" }
   ]
 
   const containerVariants = {
