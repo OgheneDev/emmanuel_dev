@@ -20,7 +20,7 @@ export function Projects() {
         "A full-stack e-commerce solution with React.js and Firebase integration. Features include product catalog, shopping cart, and secure checkout.",
       image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748603305/Annotation_2025-05-30_120753_mpkdoz.png",
       technologies: ["React", "JavaScript", "TailwindCSS", "Firebase", "Redux", ],
-      liveUrl: "https://technest-two.vercel.app/",
+      liveUrl: "https://technest-frontend.vercel.app/",
       githubUrl: "https://github.com/OgheneDev/technest-frontend",
     },
     {
