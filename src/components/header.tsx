@@ -76,11 +76,11 @@ export function Header() {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-gray-300 hover:text-blue-400 transition-colors">
+            <Link key={item.href} href={item.href} className="text-gray-300 text-sm hover:text-blue-400 transition-colors">
               {item.label}
             </Link>
           ))}
-          <Button className="bg-blue-600 hover:bg-blue-700 glow cursor-pointer" onClick={handleResumeClick}>
+          <Button className="bg-blue-600 hover:bg-blue-700 glow text-sm cursor-pointer" onClick={handleResumeClick}>
             Download Resume
           </Button>
         </div>

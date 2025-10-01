@@ -126,7 +126,7 @@ function createAmazingApps() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="glow bg-blue-600 text-sm hover:bg-blue-700 transition-all duration-300">
+              <Button size="lg" className="glow bg-blue-600 text-sm hover:bg-blue-700 cursor-pointer transition-all duration-300">
                 <Link href="#projects">View My Work</Link>
               </Button>
               <Button
