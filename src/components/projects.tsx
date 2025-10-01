@@ -15,11 +15,11 @@ export function Projects() {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "TechNest",
       description:
-        "A full-stack e-commerce solution with React.js and Firebase integration. Features include product catalog, shopping cart, and secure checkout.",
+        "A full-stack e-commerce solution with Next.js and Express.js. Features include product catalog, shopping cart, and secure checkout.",
       image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748603305/Annotation_2025-05-30_120753_mpkdoz.png",
-      technologies: ["React", "JavaScript", "TailwindCSS", "Firebase", "Redux", ],
+      technologies: ["Next.js", "TypeScript", "TailwindCSS", "Express.js", "MongoDB", "Zustand" ],
       liveUrl: "https://technest-two.vercel.app/",
       githubUrl: "https://github.com/OgheneDev/technest-frontend",
     },
@@ -32,6 +32,16 @@ export function Projects() {
       liveUrl: "https://task-app-frontend-rho.vercel.app/",
       githubUrl: "https://github.com/OgheneDev/task-app-frontend",
     },
+    {
+  title: "Burn and Co.",
+  description: 
+    "A jewellery listing website with a custom real-time chat widget built using Firebase, featuring a clean UI with React.js and Tailwind CSS.",
+  image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1759343879/Annotation_2025-10-01_193741_j7cuy7.png",
+  technologies: ["React.js", "Tailwind", "JavaScript", "Firebase"],
+  liveUrl: "https://jewellery-ebon.vercel.app/",
+  githubUrl: "https://github.com/OgheneDev/jewellery"
+}
+
   ]
 
   const containerVariants = {
