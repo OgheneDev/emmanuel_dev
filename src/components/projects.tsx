@@ -19,13 +19,8 @@ export function Projects() {
       description:
         "A full-stack e-commerce solution with Next.js and Express.js. Features include product catalog, shopping cart, and secure checkout.",
       image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748603305/Annotation_2025-05-30_120753_mpkdoz.png",
-<<<<<<< HEAD
       technologies: ["Next.js", "TypeScript", "TailwindCSS", "Express.js", "MongoDB", "Zustand" ],
       liveUrl: "https://technest-two.vercel.app/",
-=======
-      technologies: ["React", "JavaScript", "TailwindCSS", "Firebase", "Redux", ],
-      liveUrl: "https://technest-frontend.vercel.app/",
->>>>>>> fe3421e33758171ae88ae6aad0d54202c925ae4d
       githubUrl: "https://github.com/OgheneDev/technest-frontend",
     },
     {
