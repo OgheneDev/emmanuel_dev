@@ -103,7 +103,7 @@ export function Header() {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed inset-0 min-h-screen overflow-hidden bg-gray-950/95 backdrop-blur-md z-[100]"
+              className="fixed inset-0 min-h-screen overflow-hidden bg-black backdrop-blur-md z-[100]"
               style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
             >
               <div className="h-[100dvh] flex flex-col overflow-hidden">
