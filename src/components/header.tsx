@@ -80,7 +80,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Button className="bg-blue-600 hover:bg-blue-700 glow" onClick={handleResumeClick}>
+          <Button className="bg-blue-600 hover:bg-blue-700 glow cursor-pointer" onClick={handleResumeClick}>
             Download Resume
           </Button>
         </div>

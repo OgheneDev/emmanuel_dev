@@ -126,13 +126,13 @@ function createAmazingApps() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="glow bg-blue-600 hover:bg-blue-700 transition-all duration-300">
+              <Button size="lg" className="glow bg-blue-600 text-sm hover:bg-blue-700 transition-all duration-300">
                 <Link href="#projects">View My Work</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 transition-all duration-300"
+                className="border-blue-400 text-blue-400 text-sm hover:bg-blue-400 hover:text-gray-900 transition-all duration-300"
               >
                 <Link href="#contact" className="flex items-center">
                   <Mail className="mr-2 h-4 w-4" />

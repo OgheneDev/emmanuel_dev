@@ -8,6 +8,7 @@ import { Textarea } from "./ui/textarea"
 import { Mail, MapPin, Phone, Loader2 } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import Swal from "sweetalert2"
+import { FaWhatsapp } from "react-icons/fa"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -115,6 +116,7 @@ export function Contact() {
                 {[
                   { Icon: Mail, text: "emmanueloghene72@gmail.com" },
                   { Icon: Phone, text: "+234 916 247 5151" },
+                  { Icon: FaWhatsapp, text: '+234 807 192 0976' },
                   { Icon: MapPin, text: "Benin City, Nigeria" },
                 ].map((item, index) => (
                   <motion.div
