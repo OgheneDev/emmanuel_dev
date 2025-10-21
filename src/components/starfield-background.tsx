@@ -38,13 +38,13 @@ export function StarfieldBackground() {
 
     const createStars = () => {
       const stars: Star[] = []
-      const numStars = Math.floor((window.innerWidth * window.innerHeight) / 8000)
+      const numStars = Math.floor((window.innerWidth * window.innerHeight) / 6000)
 
       for (let i = 0; i < numStars; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
+          size: Math.random() * 2.5 + 0.5,
           speed: Math.random() * 0.5 + 0.1,
         })
       }
@@ -53,16 +53,16 @@ export function StarfieldBackground() {
 
     const createParticles = () => {
       const particles: Particle[] = []
-      const numParticles = 15
+      const numParticles = 20
 
       for (let i = 0; i < numParticles; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.2,
+          size: Math.random() * 3.5 + 1,
+          speedX: (Math.random() - 0.5) * 0.4,
+          speedY: (Math.random() - 0.5) * 0.4,
+          opacity: Math.random() * 0.4 + 0.2,
         })
       }
       particlesRef.current = particles
@@ -72,7 +72,7 @@ export function StarfieldBackground() {
       starsRef.current.forEach((star) => {
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.3 + Math.sin(Date.now() * 0.001 + star.x) * 0.3})`
+        ctx.fillStyle = `rgba(200, 220, 255, ${0.2 + Math.sin(Date.now() * 0.001 + star.x) * 0.3})`
         ctx.fill()
       })
     }
@@ -81,13 +81,14 @@ export function StarfieldBackground() {
       particlesRef.current.forEach((particle) => {
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`
+        // Darker purple/indigo particles
+        ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`
         ctx.fill()
       })
     }
 
     const drawConnections = () => {
-      const connectionDistance = 150
+      const connectionDistance = 180
 
       for (let i = 0; i < particlesRef.current.length; i++) {
         for (let j = i + 1; j < particlesRef.current.length; j++) {
@@ -97,12 +98,12 @@ export function StarfieldBackground() {
           const distance = Math.sqrt(Math.pow(particle1.x - particle2.x, 2) + Math.pow(particle1.y - particle2.y, 2))
 
           if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.3
+            const opacity = (1 - distance / connectionDistance) * 0.25
             ctx.beginPath()
             ctx.moveTo(particle1.x, particle1.y)
             ctx.lineTo(particle2.x, particle2.y)
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`
-            ctx.lineWidth = 1
+            ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`
+            ctx.lineWidth = 1.5
             ctx.stroke()
           }
         }
