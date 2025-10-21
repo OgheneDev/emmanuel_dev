@@ -12,13 +12,13 @@
     box-sizing: border-box;
   }
 
-  body {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    color: #e5e7eb;
-  }
+body {
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 80%);
+  color: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
 }
 
 /* Starfield Background */
