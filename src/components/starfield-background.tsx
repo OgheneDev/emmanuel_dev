@@ -62,7 +62,7 @@ export function StarfieldBackground() {
           size: Math.random() * 3.5 + 1,
           speedX: (Math.random() - 0.5) * 0.4,
           speedY: (Math.random() - 0.5) * 0.4,
-          opacity: Math.random() * 0.4 + 0.2,
+          opacity: Math.random() * 0.3 + 0.1,
         })
       }
       particlesRef.current = particles
@@ -72,7 +72,8 @@ export function StarfieldBackground() {
       starsRef.current.forEach((star) => {
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(200, 220, 255, ${0.2 + Math.sin(Date.now() * 0.001 + star.x) * 0.3})`
+        // subtle white flicker
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.3 + Math.sin(Date.now() * 0.001 + star.x) * 0.3})`
         ctx.fill()
       })
     }
@@ -81,29 +82,28 @@ export function StarfieldBackground() {
       particlesRef.current.forEach((particle) => {
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        // Darker purple/indigo particles
-        ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`
+        // soft gray glow
+        ctx.fillStyle = `rgba(200, 200, 200, ${particle.opacity})`
         ctx.fill()
       })
     }
 
     const drawConnections = () => {
-      const connectionDistance = 180
+      const connectionDistance = 150
 
       for (let i = 0; i < particlesRef.current.length; i++) {
         for (let j = i + 1; j < particlesRef.current.length; j++) {
-          const particle1 = particlesRef.current[i]
-          const particle2 = particlesRef.current[j]
-
-          const distance = Math.sqrt(Math.pow(particle1.x - particle2.x, 2) + Math.pow(particle1.y - particle2.y, 2))
+          const p1 = particlesRef.current[i]
+          const p2 = particlesRef.current[j]
+          const distance = Math.hypot(p1.x - p2.x, p1.y - p2.y)
 
           if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.25
+            const opacity = (1 - distance / connectionDistance) * 0.15
             ctx.beginPath()
-            ctx.moveTo(particle1.x, particle1.y)
-            ctx.lineTo(particle2.x, particle2.y)
-            ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`
-            ctx.lineWidth = 1.5
+            ctx.moveTo(p1.x, p1.y)
+            ctx.lineTo(p2.x, p2.y)
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`
+            ctx.lineWidth = 1
             ctx.stroke()
           }
         }
@@ -117,20 +117,15 @@ export function StarfieldBackground() {
 
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1
-
-        particle.x = Math.max(0, Math.min(canvas.width, particle.x))
-        particle.y = Math.max(0, Math.min(canvas.height, particle.y))
       })
     }
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-
       drawStars()
       updateParticles()
       drawParticles()
       drawConnections()
-
       animationRef.current = requestAnimationFrame(animate)
     }
 
@@ -146,12 +141,9 @@ export function StarfieldBackground() {
     }
 
     window.addEventListener("resize", handleResize)
-
     return () => {
       window.removeEventListener("resize", handleResize)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
     }
   }, [])
 
