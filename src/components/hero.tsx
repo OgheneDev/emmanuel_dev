@@ -1,478 +1,299 @@
-"use client"
+"use client";
 
-import { Button } from "./ui/button"
-import { Github, Linkedin, Mail } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { Button } from "./ui/button";
+import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { motion, Variants } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export function Hero() {
-  const [displayedText, setDisplayedText] = useState("")
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const fullText = "Hi, I'm Emmanuel"
-  const typingSpeed = 100
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [particles, setParticles] = useState<{ left: string; top: string }[]>([]);
+  const fullText = "Emmanuel Oghene";
+  const typingSpeed = 100;
 
   useEffect(() => {
     if (currentIndex < fullText.length) {
       const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + fullText[currentIndex])
-        setCurrentIndex(prev => prev + 1)
-      }, typingSpeed)
-      return () => clearTimeout(timeout)
+        setDisplayedText((prev) => prev + fullText[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      }, typingSpeed + Math.random() * 50);
+      return () => clearTimeout(timeout);
     }
-  }, [currentIndex, fullText])
+  }, [currentIndex]);
 
-  const codeSnippet = `// Hello, I'm Emmanuel
-const developer = {
-  name: 'Emmanuel',
-  role: 'Frontend Developer',
-  experience: 3,
-  skills: [
-    'React', 'Next.js', 'Node.js'
-    'TypeScript', 'Express', 'TailwindCSS', 'GitHub Actions'
-  ],
-};
+  useEffect(() => {
+    // Generate particle positions only on the client
+    const newParticles = [...Array(20)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+    }));
+    setParticles(newParticles);
+  }, []);
 
-function createAmazingApps() {
-  return developer.skills.map(magic) => {
-    // Building something amazing...
-  })
-}`
-
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  }
+        delayChildren: 0.3,
+      },
+    },
+  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  };
+
+  const cursorVariants: Variants = {
+    blink: {
+      opacity: [1, 0],
+      transition: {
+        duration: 0.7,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const skills = [
+    { name: "React", color: "from-cyan-400 to-blue-400" },
+    { name: "Next.js", color: "from-gray-300 to-gray-500" },
+    { name: "TypeScript", color: "from-blue-400 to-blue-600" },
+    { name: "Node.js", color: "from-green-400 to-green-600" },
+    { name: "MongoDB", color: "from-green-500 to-green-700" },
+    { name: "Express", color: "from-gray-400 to-gray-600" },
+  ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 pb-10 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c] via-[#0b0b0d] to-[#0a0a0c]">
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.08) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%)",
+              "radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.06) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.08) 0%, transparent 50%)",
+            ],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Desktop Layout */}
-        <div className="hidden lg:py-6 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center max-w-7xl mx-auto">
-          {/* Left Content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
-            {/* Typing Animation Header */}
-            <div className="h-20 flex items-center">
-              <motion.h1 
-                className="text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-5xl mx-auto text-center space-y-8"
+        >
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="flex justify-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
+            >
+              <Sparkles className="w-4 h-4 text-cyan-400" />
+              <span className="text-cyan-400 font-medium text-sm">Available for opportunities</span>
+            </motion.div>
+          </motion.div>
+
+          {/* Main Heading with Typing Effect */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <div className="min-h-[80px] sm:min-h-[100px] flex flex-col items-center justify-center">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent tracking-tight">
                 {displayedText}
                 <motion.span
-                  className="inline-block w-1 h-12 xl:h-16 bg-blue-400 ml-1"
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
+                  variants={cursorVariants}
+                  animate="blink"
+                  className="inline-block w-1 sm:w-1.5 h-12 sm:h-16 md:h-20 bg-cyan-400 ml-2 rounded-full align-middle"
                 />
-              </motion.h1>
+              </h1>
             </div>
 
-            <motion.div variants={itemVariants}>
-              <h2 className="text-2xl xl:text-3xl font-semibold text-white mb-4">
-                I build things for the web
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-lg">
-                I build sleek, high-performance{" "}
-                <span className="text-blue-400 font-semibold">web apps</span> for modern{" "}
-                <span className="text-purple-400 font-semibold">businesses</span> and{" "}
-                <span className="text-cyan-400 font-semibold">organizations</span>. With 3 years of frontend experience in the JavaScript ecosystem, I bring ideas to life with clean, efficient, and user-focused solutions.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="space-y-4">
-              <p className="text-gray-400 font-medium">What I can help you with:</p>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  Building responsive web applications with React & Next.js
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Creating user experiences that are both intuitive and engaging
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4"
+            <motion.h2
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.8 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white"
             >
-              <Button size="lg" className="glow bg-blue-600 text-sm hover:bg-blue-700 cursor-pointer transition-all duration-300">
-                <Link href="#projects">View My Work</Link>
-              </Button>
+              Full-Stack Developer
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.8, duration: 0.8 }}
+              className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
+            >
+              I craft{" "}
+              <span className="text-cyan-400 font-semibold">performant</span> and{" "}
+              <span className="text-teal-400 font-semibold">scalable</span> web applications
+              from database to interface, turning ideas into reality with clean code and modern
+              technologies.
+            </motion.p>
+          </motion.div>
+
+          {/* Floating Tech Stack Pills */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-3 px-4 max-w-2xl mx-auto"
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 2 + index * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="group relative cursor-pointer"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-20 blur-lg group-hover:opacity-40 transition-opacity rounded-full`} />
+                <div className="relative px-4 py-2 bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-full group-hover:border-cyan-500/50 transition-all">
+                  <span className="text-gray-300 text-sm font-medium group-hover:text-cyan-300 transition-colors">
+                    {skill.name}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-blue-400 text-blue-400 text-sm hover:bg-blue-400 hover:text-gray-900 transition-all duration-300"
+                className="w-full sm:w-auto text-sm cursor-pointer bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 shadow-lg shadow-cyan-500/25 group"
               >
-                <Link href="#contact" className="flex items-center">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get In Touch
+                <Link href="#projects" className="flex items-center">
+                  View My Work
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </motion.div>
 
-            <motion.div 
-              variants={itemVariants}
-              className="flex space-x-6"
-            >
-              <Link href="https://github.com/OgheneDev" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Github className="h-6 w-6" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link href="https://www.linkedin.com/in/emmanuel-oghene-0242182ab" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Linkedin className="h-6 w-6" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="mailto:emmanueloghene72@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Mail className="h-6 w-6" />
-                <span className="sr-only">Email</span>
-              </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-2 text-sm cursor-pointer border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-300 hover:border-cyan-400 transition-all duration-300"
+              >
+                <Link href="#contact" className="flex items-center">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Get In Touch
+                </Link>
+              </Button>
             </motion.div>
           </motion.div>
 
-          {/* Right Code Snippet */}
+          {/* Social Links */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="flex justify-center"
+            variants={itemVariants}
+            className="flex justify-center space-x-6 pt-4"
           >
-            <motion.div
-              className="relative group cursor-pointer"
-              whileHover={{ 
-                scale: 1.02,
-                rotateY: 5,
-                rotateX: 5,
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              {/* Code Editor Window */}
-              <div className="bg-gray-900 rounded-xl border border-gray-700 shadow-2xl overflow-hidden w-[600px]">
-                {/* Title Bar */}
-                <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                  <span className="text-gray-400 text-sm font-mono">portfolio.tsx</span>
-                </div>
-                
-                {/* Code Content */}
-                <div className="p-4 font-mono text-sm leading-relaxed">
-                  <pre className="text-gray-300">
-                    <code>
-                      <span className="text-gray-500">// Hello, I'm Emmanuel</span>{'\n'}
-                      <span className="text-blue-400">const</span> <span className="text-yellow-300">developer</span> <span className="text-white">=</span> <span className="text-white">{'{'}</span>{'\n'}
-                      {'  '}<span className="text-red-400">name</span><span className="text-white">:</span> <span className="text-green-400">'Emmanuel'</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Frontend Developer'</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">experience</span><span className="text-white">:</span> <span className="text-purple-400">3</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">skills</span><span className="text-white">:</span> <span className="text-white">[</span>{'\n'}
-                      {'    '}<span className="text-green-400">'React'</span><span className="text-white">,</span> <span className="text-green-400">'Next.js'</span><span className="text-white">,</span> <span className="text-green-400">'Node.js'</span>{'\n'}
-                      {'    '}<span className="text-green-400">'TypeScript'</span><span className="text-white">,</span> <span className="text-green-400">'Express'</span>{'\n'}
-                      {'  '}<span className="text-white">],</span>{'\n'}
-                      <span className="text-white">{'};'}</span>{'\n\n'}
-                      <span className="text-blue-400">function</span> <span className="text-yellow-300">createAmazingApps</span><span className="text-white">() {'{'}</span>{'\n'}
-                      {'  '}<span className="text-blue-400">return</span> <span className="text-yellow-300">developer</span><span className="text-white">.</span><span className="text-yellow-300">skills</span><span className="text-white">.</span><span className="text-blue-400">map</span><span className="text-white">(</span><span className="text-yellow-300">magic</span><span className="text-white">) =&gt; {'{'}</span>{'\n'}
-                      {'    '}<span className="text-gray-500">// Building something amazing...</span>{'\n'}
-                      {'  '}<span className="text-white">{'});'}</span>{'\n'}
-                      <span className="text-white">{'}'}</span>
-                    </code>
-                  </pre>
-                </div>
-              </div>
-              
-              {/* Floating elements */}
+            {[
+              { href: "https://github.com/OgheneDev", icon: Github, label: "GitHub" },
+              { href: "https://www.linkedin.com/in/emmanuel-oghene-0242182ab", icon: Linkedin, label: "LinkedIn" },
+              { href: "mailto:emmanueloghene72@gmail.com", icon: Mail, label: "Email" },
+            ].map((social, index) => (
               <motion.div
-                className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full opacity-60"
-                animate={{ 
-                  y: [-5, 5, -5],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-3 -left-3 w-6 h-6 bg-purple-500 rounded-full opacity-40"
-                animate={{ 
-                  x: [-3, 3, -3],
-                  opacity: [0.4, 0.8, 0.4]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Tablet Layout */}
-        <div className="hidden md:block lg:hidden max-w-4xl mx-auto">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-10"
-          >
-            {/* Tablet Header */}
-            <div className="text-center mb-8">
-              <div className="h-16 flex items-center justify-center mb-6">
-                <motion.h1 
-                  className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
+                key={social.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.5 + index * 0.1, duration: 0.5 }}
+              >
+                <Link
+                  href={social.href}
+                  className="group relative"
+                  aria-label={social.label}
+                  target={social.label !== "Email" ? "_blank" : undefined}
+                  rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
                 >
-                  {displayedText}
-                  <motion.span
-                    className="inline-block w-1 h-10 bg-blue-400 ml-1"
-                    animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.8, repeat: Infinity }}
-                  />
-                </motion.h1>
-              </div>
-              
-              <motion.div variants={itemVariants} className="space-y-4 max-w-2xl mx-auto">
-                <h2 className="text-2xl font-semibold text-white">
-                  I build things for the web
-                </h2>
-                <p className="text-lg text-gray-300 leading-relaxed px-6">
-                  I build sleek, high-performance{" "}
-                  <span className="text-blue-400 font-semibold">web apps</span> with{" "}
-                  <span className="text-purple-400 font-semibold">modern technologies</span>.
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Tablet Code Editor */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-10"
-            >
-              <motion.div
-                className="relative mx-auto max-w-2xl"
-                whileHover={{ 
-                  scale: 1.02,
-                  rotateY: 5,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <div className="bg-gray-900 rounded-xl border border-gray-700 shadow-2xl overflow-hidden">
-                  {/* Title Bar */}
-                  <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="relative"
+                  >
+                    <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative p-3 bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-full group-hover:border-cyan-500/50 transition-all">
+                      <social.icon className="h-5 w-5 text-gray-300 group-hover:text-cyan-400 transition-colors" />
                     </div>
-                    <span className="text-gray-400 text-sm font-mono">portfolio.tsx</span>
-                  </div>
-                  
-                  {/* Code Content */}
-                  <div className="p-4 font-mono text-sm leading-relaxed">
-                    <pre className="text-gray-300">
-                      <code>
-                        <span className="text-gray-500">// Hello, I'm Emmanuel</span>{'\n'}
-                        <span className="text-blue-400">const</span> <span className="text-yellow-300">developer</span> <span className="text-white">=</span> <span className="text-white">{'{'}</span>{'\n'}
-                        {'  '}<span className="text-red-400">name</span><span className="text-white">:</span> <span className="text-green-400">'Emmanuel'</span><span className="text-white">,</span>{'\n'}
-                        {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Frontend Developer'</span><span className="text-white">,</span>{'\n'}
-                        {'  '}<span className="text-red-400">experience</span><span className="text-white">:</span> <span className="text-purple-400">3</span><span className="text-white">,</span>{'\n'}
-                        {'  '}<span className="text-red-400">skills</span><span className="text-white">:</span> <span className="text-white">[</span>{'\n'}
-                        {'    '}<span className="text-green-400">'React'</span><span className="text-white">,</span> <span className="text-green-400">'Next.js'</span><span className="text-white">,</span> <span className="text-green-400">'Node.js'</span>{'\n'}
-                        {'    '}<span className="text-green-400">'TypeScript'</span><span className="text-white">,</span> <span className="text-green-400">'Express'</span>{'\n'}
-                        {'  '}<span className="text-white">],</span>{'\n'}
-                        <span className="text-white">{'};'}</span>{'\n\n'}
-                        <span className="text-blue-400">function</span> <span className="text-yellow-300">createAmazingApps</span><span className="text-white">() {'{'}</span>{'\n'}
-                        {'  '}<span className="text-blue-400">return</span> <span className="text-yellow-300">developer</span><span className="text-white">.</span><span className="text-yellow-300">skills</span><span className="text-white">.</span><span className="text-blue-400">map</span><span className="text-white">(</span><span className="text-yellow-300">magic</span><span className="text-white">) =&gt; {'{'}</span>{'\n'}
-                        {'    '}<span className="text-gray-500">// Building something amazing...</span>{'\n'}
-                        {'  '}<span className="text-white">{'});'}</span>{'\n'}
-                        <span className="text-white">{'}'}</span>
-                      </code>
-                    </pre>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Tablet Actions */}
-            <motion.div variants={itemVariants} className="flex flex-row justify-center gap-4 mb-8">
-              <Button size="lg" className="glow bg-blue-600 hover:bg-blue-700">
-                <Link href="#projects">View My Work</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
-              >
-                <Link href="#contact" className="flex items-center">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get In Touch
+                  </motion.div>
                 </Link>
-              </Button>
-            </motion.div>
-
-            {/* Tablet Social Links */}
-            <motion.div variants={itemVariants} className="flex justify-center space-x-8">
-              <Link href="https://github.com/OgheneDev" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Github className="h-6 w-6" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link href="https://www.linkedin.com/in/emmanuel-oghene-0242182ab" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Linkedin className="h-6 w-6" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="mailto:emmanueloghene72@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Mail className="h-6 w-6" />
-                <span className="sr-only">Email</span>
-              </Link>
-            </motion.div>
+              </motion.div>
+            ))}
           </motion.div>
-        </div>
 
-        {/* Mobile Layout - Update visibility classes */}
-        <div className="md:hidden max-w-4xl mx-auto text-center">
+          {/* Scroll Indicator */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 0.8 }}
+            className="pt-12"
           >
-            {/* Mobile Typing Header */}
-            <div className="h-16 flex items-center justify-center">
-              <motion.h1 
-                className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                {displayedText}
-                <motion.span
-                  className="inline-block w-1 h-8 sm:h-10 md:h-12 bg-blue-400 ml-1"
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                />
-              </motion.h1>
-            </div>
-
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h2 className="text-xl sm:text-2xl font-semibold text-white">
-                I build things for the web
-              </h2>
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                I create beautiful, responsive, and user-friendly web experiences using modern 
-                technologies and best practices.
-              </p>
-            </motion.div>
-
-            {/* Mobile Code Snippet */}
             <motion.div
-              variants={itemVariants}
-              className="flex justify-center px-4"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2"
             >
-              <motion.div
-                className="bg-gray-900 rounded-lg border border-gray-700 shadow-xl overflow-hidden w-full max-w-sm"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="bg-gray-800 px-3 py-2 flex items-center justify-between border-b border-gray-700">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  </div>
-                  <span className="text-gray-400 text-xs font-mono">portfolio.tsx</span>
-                </div>
-                
-                <div className="p-3 font-mono text-xs leading-relaxed">
-                  <pre className="text-gray-300">
-                    <code>
-                      <span className="text-gray-500">// Hello, I'm Emmanuel</span>{'\n'}
-                      <span className="text-blue-400">const</span> <span className="text-yellow-300">developer</span> <span className="text-white">=</span> <span className="text-white">{'{'}</span>{'\n'}
-                      {'  '}<span className="text-red-400">name</span><span className="text-white">:</span> <span className="text-green-400">'Emmanuel'</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">role</span><span className="text-white">:</span> <span className="text-green-400">'Frontend Developer'</span><span className="text-white">,</span>{'\n'}
-                      {'  '}<span className="text-red-400">experience</span><span className="text-white">:</span> <span className="text-purple-400">3</span><span className="text-white">,</span>{'\n'}
-                      <span className="text-white">{'};'}</span>
-                    </code>
-                  </pre>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button size="lg" className="glow bg-blue-600 hover:bg-blue-700">
-                <Link href="#projects">View My Work</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
-              >
-                <Link href="#contact" className="flex items-center">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get In Touch
-                </Link>
-              </Button>
-            </motion.div>
-
-            <motion.div 
-              variants={itemVariants}
-              className="flex justify-center space-x-6 pt-4"
-            >
-              <Link href="https://github.com/OgheneDev" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Github className="h-6 w-6" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link href="https://www.linkedin.com/in/emmanuel-oghene-0242182ab" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Linkedin className="h-6 w-6" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="mailto:emmanueloghene72@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Mail className="h-6 w-6" />
-                <span className="sr-only">Email</span>
-              </Link>
+              <span className="text-gray-400 text-sm">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-gray-600 rounded-full p-1">
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-1.5 h-3 bg-cyan-400 rounded-full mx-auto"
+                />
+              </div>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {particles.map((particle, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
+            style={{
+              left: particle.left,
+              top: particle.top,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
     </section>
-  )
+  );
 }
