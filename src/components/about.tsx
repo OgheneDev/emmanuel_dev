@@ -96,7 +96,7 @@ export function About() {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.1, y: -5 }}
-                  className="flex flex-col items-center min-w-[120px]"
+                  className="flex flex-col cursor-pointer items-center min-w-[120px]"
                 >
                   <div className="relative mb-3">
                     <motion.div
