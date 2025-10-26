@@ -7,8 +7,8 @@ import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Mail, MapPin, Phone, Loader2, Send, MessageCircle } from "lucide-react"
 import { motion, useInView } from "framer-motion"
-import Swal from "sweetalert2"
 import { FaWhatsapp } from "react-icons/fa"
+import { Toast } from "./ui/toast"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -19,6 +19,9 @@ export function Contact() {
   const [isLoading, setIsLoading] = useState(false)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastType, setToastType] = useState<'success' | 'error'>('success');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,19 +37,13 @@ export function Contact() {
       if (!response.ok) throw new Error('Failed to send message')
 
       setFormData({ name: "", email: "", message: "" })
-      Swal.fire({
-        title: "Sent!",
-        text: "Your message is on its way!",
-        icon: "success",
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      setToastMessage('Your message is on its way!');
+      setToastType("success");
+      setShowToast(true);
     } catch (error) {
-      Swal.fire({
-        title: "Oops!",
-        text: "Something went wrong. Try again?",
-        icon: "error",
-      })
+      setToastMessage('Something went wrong. Try again?');
+      setToastType("error");
+      setShowToast(true);
     } finally {
       setIsLoading(false)
     }
@@ -334,6 +331,15 @@ export function Contact() {
           </motion.div>
         </div>
       </div>
+
+      {/* Toast */}
+      <Toast
+        show={showToast}
+        message={toastMessage}
+        type={toastType}
+        onClose={() => setShowToast(false)}
+        duration={3000}
+      />
     </section>
   )
 }
