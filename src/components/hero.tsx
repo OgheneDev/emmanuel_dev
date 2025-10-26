@@ -142,7 +142,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
+              className="text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
             >
               I craft{" "}
               <span className="text-cyan-400 font-semibold">performant</span> and{" "}
@@ -179,7 +179,7 @@ export function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
+            className="flex flex-col md:flex-row gap-4 w-full justify-center md:items-center px-4"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
@@ -197,7 +197,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-2 text-sm cursor-pointer border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-300 hover:border-cyan-400 transition-all duration-300"
+                className="w-full sm:w-auto border-2 text-sm cursor-pointer border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:text-white hover:border-cyan-400 transition-all duration-300"
               >
                 <Link href="#contact" className="flex items-center">
                   <Mail className="mr-2 h-5 w-5" />

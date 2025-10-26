@@ -72,7 +72,7 @@ export function About() {
               <span className="text-cyan-400 font-medium">Full-Stack Developer & Designer</span>
             </motion.div>
 
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
               Building End-to-End Solutions
             </h2>
             
@@ -80,7 +80,7 @@ export function About() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className=" text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
+              className=" text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
             >
               A passionate full-stack developer with over 4 years of experience crafting complete digital solutions from database to interface. I specialize in React, Next.js, Node.js, and building scalable applications that deliver real value.
             </motion.p>

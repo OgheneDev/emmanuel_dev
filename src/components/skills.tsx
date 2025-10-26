@@ -139,7 +139,7 @@ export function Skills() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-24 flex flex-wrap justify-center gap-8"
+            className="mt-24 grid grid-cols-2 md:grid-cols-4 justify-center gap-8"
           >
             {[
               { number: "25+", label: "Technologies", color: "text-cyan-400" },
