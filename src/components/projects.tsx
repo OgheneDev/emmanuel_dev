@@ -130,14 +130,14 @@ export function Projects() {
             >
               <span className="text-cyan-400 font-medium text-sm">Recent Work</span>
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
               Featured Projects
             </h2>
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-gray-400 text-lg max-w-2xl mx-auto"
+              className="text-gray-400 text-sm max-w-2xl mx-auto"
             >
               A collection of projects showcasing my full-stack development skills
             </motion.p>
