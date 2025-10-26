@@ -294,7 +294,7 @@ export function Contact() {
                         type="button"
                         onClick={handleSubmit}
                         disabled={isLoading}
-                        className="w-full h-12 text-base font-semibold bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full h-12 text-sm cursor-pointer bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isLoading ? (
                           <span className="flex items-center gap-2">
