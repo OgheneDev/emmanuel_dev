@@ -148,7 +148,7 @@ export function Projects() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="space-y-20 md:px-10"
+            className="space-y-20 md:px-10 "
           >
             {projects.map((project, index) => (
               <motion.div
@@ -235,7 +235,7 @@ export function Projects() {
                         className="bg-gradient-to-r text-sm from-cyan-500 cursor-pointer to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white border-0 shadow-lg shadow-cyan-500/25"
                       >
                         <Link href={project.liveUrl} target="_blank" className="flex items-center">
-                          <ExternalLink className="mr-2 h-5 w-5" />
+                          <ExternalLink className="mr-2 h-3 w-3" />
                           View Live
                         </Link>
                       </Button>
@@ -247,7 +247,7 @@ export function Projects() {
                         onClick={() => handleCodeClick(project)}
                         className="border-cyan-500/30 text-sm cursor-pointer hover:bg-cyan-500/10 text-cyan-400 hover:text-white hover:border-cyan-500/50"
                       >
-                        <Github className="mr-2 h-5 w-5" />
+                        <Github className="mr-2 h-3 w-3" />
                         View Code
                       </Button>
                     </motion.div>
@@ -305,7 +305,7 @@ export function Projects() {
                     <h4 className="font-semibold text-white mb-1">Frontend Repository</h4>
                     <p className="text-sm text-gray-400">Client-side code & UI</p>
                   </div>
-                  <ExternalLink className="h-5 w-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink className="h-3 w-3 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </motion.a>
 
                 {selectedProject.repos.backend && (
@@ -324,7 +324,7 @@ export function Projects() {
                       <h4 className="font-semibold text-white mb-1">Backend Repository</h4>
                       <p className="text-sm text-gray-400">Server-side code & API</p>
                     </div>
-                    <ExternalLink className="h-5 w-5 text-gray-400 group-hover:text-teal-400 transition-colors" />
+                    <ExternalLink className="h-3 w-3 text-gray-400 group-hover:text-teal-400 transition-colors" />
                   </motion.a>
                 )}
               </div>

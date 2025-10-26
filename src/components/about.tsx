@@ -12,27 +12,27 @@ export function About() {
   const features = [
     {
       icon: Code,
-      title: "Clean Code",
+      title: "Crafting Code with Care",
       description:
-        "Writing maintainable, scalable, and well-documented code that follows best practices.",
+        "I love writing code that’s clean and intuitive, like telling a story that anyone can follow. It’s about making things work smoothly while keeping it human.",
       gradient: "from-cyan-400 to-teal-400",
       bgColor: "bg-cyan-500/10",
       borderColor: "border-cyan-500/20",
     },
     {
       icon: Palette,
-      title: "Design Systems",
+      title: "Designing with Heart",
       description:
-        "Creating consistent and reusable component libraries that scale across projects.",
+        "I create designs that feel alive and cohesive, drawing from my love for art and tech to build interfaces that spark joy and connection.",
       gradient: "from-teal-400 to-cyan-300",
       bgColor: "bg-teal-500/10",
       borderColor: "border-teal-500/20",
     },
     {
       icon: Zap,
-      title: "Performance",
+      title: "Speed with Soul",
       description:
-        "Optimizing applications for speed, accessibility, and excellent user experience.",
+        "I’m all about building apps that are fast and accessible, ensuring everyone can enjoy a seamless experience, no matter how they connect.",
       gradient: "from-cyan-400 to-teal-400",
       bgColor: "bg-cyan-500/10",
       borderColor: "border-cyan-500/20",
@@ -40,10 +40,10 @@ export function About() {
   ]
 
   const stats = [
-    { icon: Heart, value: "10+", label: "Happy Clients", color: "text-teal-400" },
-    { icon: Code, value: "25+", label: "Technologies", color: "text-cyan-400" },
-    { icon: Coffee, value: "100+", label: "Cups of Coffee", color: "text-yellow-400" },
-    { icon: Users, value: "10+", label: "Team Projects", color: "text-green-400" },
+    { icon: Heart, value: "10+", label: "Clients I’ve Loved Working With", color: "text-teal-400" },
+    { icon: Code, value: "25+", label: "Tools in My Creative Kit", color: "text-cyan-400" },
+    { icon: Coffee, value: "200+", label: "Late-Night Coffees", color: "text-yellow-400" },
+    { icon: Users, value: "15+", label: "Team Adventures", color: "text-green-400" },
   ]
 
   return (
@@ -69,20 +69,20 @@ export function About() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
             >
-              <span className="text-cyan-400 font-medium">Full-Stack Developer & Designer</span>
+              <span className="text-cyan-400 font-medium text-sm">Full-Stack Developer & Dreamer</span>
             </motion.div>
 
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
-              Building End-to-End Solutions
+              Turning Ideas into Reality
             </h2>
             
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className=" text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
+              className="text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
             >
-              A passionate full-stack developer with over 4 years of experience crafting complete digital solutions from database to interface. I specialize in React, Next.js, Node.js, and building scalable applications that deliver real value.
+              Hey there! I’m a full-stack developer who’s been coding for over 4 years, fueled by coffee and a passion for creating apps that make life easier and more fun. From sketching wireframes to building robust backends with React, Next.js, and Node.js, I love bringing ideas to life and solving real-world problems with a personal touch.
             </motion.p>
 
             {/* Stats Bar */}
@@ -157,10 +157,10 @@ export function About() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="relative flex items-center"
+              className="relative flex justify-center items-center"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-3xl blur-xl" />
-              <Card className="relative w-full cursor-pointer bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden">
+              <Card className="relative md:w-[700px] w-full cursor-pointer bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden">
                 <CardContent className="p-8">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
@@ -168,11 +168,11 @@ export function About() {
                   >
                     <div className="text-cyan-400 text-6xl mb-4 font-serif">"</div>
                     <blockquote className="text-xl md:text-2xl font-medium text-gray-200 mb-6 italic leading-relaxed">
-                      Code is like humor. When you have to explain it, it's bad.
+                      I believe coding is like storytelling, every line should spark curiosity and bring people closer to the magic of technology.
                     </blockquote>
                     <div className="flex items-center gap-3">
                       <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
-                      <cite className="text-gray-400 not-italic">— Cory House</cite>
+                      <cite className="text-gray-400 not-italic">— My Own Words</cite>
                     </div>
                   </motion.div>
                 </CardContent>

@@ -79,7 +79,7 @@ export function Hero() {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center pt-20 pb-10 relative overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c] via-[#0b0b0d] to-[#0a0a0c]">
+      <div className="absolute inset-0 ">
         <motion.div
           className="absolute inset-0"
           animate={{
