@@ -36,6 +36,25 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden"
+      document.body.style.position = "fixed"
+      document.body.style.width = "100%"
+    } else {
+      document.body.style.overflow = "unset"
+      document.body.style.position = "unset"
+      document.body.style.width = "unset"
+    }
+
+    return () => {
+      document.body.style.overflow = "unset"
+      document.body.style.position = "unset"
+      document.body.style.width = "unset"
+    }
+  }, [isMenuOpen])
+
   const navItems = [
     { href: "#hero", label: "Home" },
     { href: "#about", label: "About" },
@@ -153,8 +172,7 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMenuOpen(false)}
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
-                style={{ top: 0, left: 0 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-40"
               />
 
               {/* Menu Panel */}
@@ -163,7 +181,7 @@ export function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                className="fixed top-0 right-0 bottom-0 w-80 bg-[#0b0b0d]/95 backdrop-blur-xl border-l border-gray-800/50 shadow-2xl md:hidden"
+                className="fixed top-0 right-0 bottom-0 w-80 bg-[#0b0b0d]/95 backdrop-blur-xl border-l border-gray-800/50 shadow-2xl md:hidden z-50"
               >
                 <div className="flex flex-col h-full">
                   {/* Header */}
