@@ -20,7 +20,7 @@ export function Skills() {
     },
     {
       title: "Backend & Database",
-      skills: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs"],
+      skills: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs", "WebSockets (Socket.io)"],
       icon: Database,
       gradient: "from-teal-400 to-blue-400",
     },

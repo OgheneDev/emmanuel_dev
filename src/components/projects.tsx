@@ -36,8 +36,8 @@ export function Projects() {
         "A full-stack e-commerce solution with Next.js and Express.js. Features include product catalog, shopping cart, and secure checkout.",
       image:
         "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748603305/Annotation_2025-05-30_120753_mpkdoz.png",
-      technologies: ["Next.js", "TypeScript", "TailwindCSS", "Express.js", "MongoDB", "Zustand"],
-      liveUrl: "https://technest-two.vercel.app/",
+      technologies: ["Next.js", "TypeScript", "JavaScript", "TailwindCSS", "Express.js", "MongoDB", "Zustand"],
+      liveUrl: "https://technest-two.vercel.app",
       repos: {
         frontend: "https://github.com/OgheneDev/technest-frontend",
         backend: "https://github.com/OgheneDev/technest-backend"
@@ -51,14 +51,15 @@ export function Projects() {
         "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748602298/Annotation_2025-05-30_115125_suvipj.png",
       technologies: [
         "Next.js",
-        "Typescript",
+        "TypeScript",
+        "JavaScript",
         "TailwindCSS",
         "Node.js",
         "Express.js",
         "Nodemailer",
         "MongoDB",
       ],
-      liveUrl: "https://task-app-frontend-rho.vercel.app/",
+      liveUrl: "https://task-app-frontend-rho.vercel.app",
       repos: {
         frontend: "https://github.com/OgheneDev/task-app-frontend",
         backend: "https://github.com/OgheneDev/task-app-backend"
@@ -71,11 +72,22 @@ export function Projects() {
       image:
         "https://res.cloudinary.com/dgc8cd67w/image/upload/v1759343879/Annotation_2025-10-01_193741_j7cuy7.png",
       technologies: ["React.js", "Tailwind", "JavaScript", "Firebase"],
-      liveUrl: "https://jewellery-ebon.vercel.app/",
+      liveUrl: "https://jewellery-ebon.vercel.app",
       repos: {
         frontend: "https://github.com/OgheneDev/jewellery"
       }
     },
+    {
+      title: "FlowChat",
+      description: "A full-stack real-time chat application that supports private and group conversations. It includes comprehensive message actions such as reply, edit, delete, forward, pin, and star; delivered and seen indicators; unread message counts; and push notifications. The app also features full user account management along with robust group administration tools including member management and role control.",
+      image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1764145469/Screenshot_2025-11-26_092401_hmyrj9.png",
+      technologies: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript", "TypeScript", "Firebase", "Zustand", "Socket.io"],
+      liveUrl: "https://flowchatt.vercel.app",
+      repos: {
+        frontend: "https://github.com/OgheneDev/FlowChat-frontend",
+        backend: "https://github.com/OgheneDev/FlowChat"
+      }
+    }
   ]
 
   const containerVariants = {
@@ -158,23 +170,25 @@ export function Projects() {
               >
                 {/* Project Image */}
                 <motion.div
-                  className="w-full lg:w-1/2 relative group"
+                  className="w-full lg:w-1/2 relative group cursor-pointer"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 group-hover:border-cyan-500/50 transition-all duration-500">
+                  <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 group-hover:border-cyan-500/50 transition-all duration-500 h-80 w-full">
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 z-10" />
                     <motion.div
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.4 }}
-                      className="relative h-80 w-full"
+                      className="relative h-full w-full"
                     >
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index === 0}
                       />
                     </motion.div>
                   </div>
@@ -214,7 +228,7 @@ export function Projects() {
                       >
                         <Badge
                           variant="outline"
-                          className="bg-gray-800/60 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition-colors px-3 py-1"
+                          className="bg-gray-800/60 cursor-pointer border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition-colors px-3 py-1"
                         >
                           {tech}
                         </Badge>
