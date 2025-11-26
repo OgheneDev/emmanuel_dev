@@ -11,9 +11,9 @@ import { StarfieldBackground } from "@/components/starfield-background"
 export default function Home() {
   return (
     <div className="min-h-screen bg-background relative">
-      <StarfieldBackground />
-      <Header />
-      <main className="relative z-10">
+      <StarfieldBackground /> 
+      <main className="relative">
+        <Header />
         <Hero />
         <About />
         <Skills />
