@@ -204,19 +204,9 @@ export function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Overlay */}
-            <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-              onClick={toggleMenu}
-              variants={overlayVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            />
-
             {/* Menu Panel */}
             <motion.div 
-              className="fixed top-0 right-0 h-full w-80 bg-[#0b0b0d] border-l border-gray-800/50 shadow-2xl z-50"
+              className="fixed top-0 right-0 h-full w-full bg-[#0b0b0d] border-l border-gray-800/50 shadow-2xl z-50"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
