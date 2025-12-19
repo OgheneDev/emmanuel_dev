@@ -483,14 +483,6 @@ export function Projects() {
             className="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] flex items-center justify-center p-4"
             onClick={closeFullscreen}
           >
-            {/* Close button */}
-            <button
-              onClick={closeFullscreen}
-              className="absolute top-6 right-6 z-50 p-3 bg-black/60 backdrop-blur-sm rounded-full border border-gray-700/50 hover:border-cyan-500/50 hover:bg-cyan-500/20 transition-all group"
-            >
-              <X className="h-6 w-6 text-gray-300 group-hover:text-cyan-400 transition-colors" />
-            </button>
-
             {/* Minimize button */}
             <button
               onClick={closeFullscreen}
