@@ -91,7 +91,7 @@ export function Projects() {
         "MongoDB",
         "Zustand",
       ],
-      liveUrl: "https://technest-two.vercel.app",
+      liveUrl: "https://technest-frontend.vercel.app",
       repos: {
         frontend: "https://github.com/OgheneDev/technest-frontend",
         backend: "https://github.com/OgheneDev/technest-backend",
