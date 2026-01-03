@@ -1,50 +1,70 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "./ui/card"
-import { Code, Palette, Zap, Heart, Coffee, Users } from "lucide-react"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { Card, CardContent } from "./ui/card";
+import { Code, Palette, Zap, Heart, Coffee, Users } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function About() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const features = [
     {
       icon: Code,
-      title: "Crafting Code with Care",
+      title: "System-Oriented Backend Design",
       description:
-        "I love writing code that’s clean and intuitive, like telling a story that anyone can follow. It’s about making things work smoothly while keeping it human.",
+        "I design backend systems by modeling real business rules from tenant isolation to permission boundaries ensuring clarity, correctness, and long-term scalability.",
       gradient: "from-cyan-400 to-teal-400",
       bgColor: "bg-cyan-500/10",
       borderColor: "border-cyan-500/20",
     },
     {
-      icon: Palette,
-      title: "Designing with Heart",
+      icon: Zap,
+      title: "SaaS Infrastructure & Workflows",
       description:
-        "I create designs that feel alive and cohesive, drawing from my love for art and tech to build interfaces that spark joy and connection.",
+        "I build core SaaS infrastructure like authentication, billing flows, audit logs, and background processes that support real production workloads.",
       gradient: "from-teal-400 to-cyan-300",
       bgColor: "bg-teal-500/10",
       borderColor: "border-teal-500/20",
     },
     {
-      icon: Zap,
-      title: "Speed with Soul",
+      icon: Users,
+      title: "Multi-Tenant & Access Control",
       description:
-        "I’m all about building apps that are fast and accessible, ensuring everyone can enjoy a seamless experience, no matter how they connect.",
+        "I implement multi-tenant architectures with clear boundaries using RBAC and role-based permissions to ensure secure and predictable access control.",
       gradient: "from-cyan-400 to-teal-400",
       bgColor: "bg-cyan-500/10",
       borderColor: "border-cyan-500/20",
     },
-  ]
+  ];
 
   const stats = [
-    { icon: Heart, value: "10+", label: "Clients I’ve Loved Working With", color: "text-teal-400" },
-    { icon: Code, value: "25+", label: "Tools in My Creative Kit", color: "text-cyan-400" },
-    { icon: Coffee, value: "200+", label: "Late-Night Coffees", color: "text-yellow-400" },
-    { icon: Users, value: "15+", label: "Team Adventures", color: "text-green-400" },
-  ]
+    {
+      icon: Heart,
+      value: "10+",
+      label: "Clients I’ve Loved Working With",
+      color: "text-teal-400",
+    },
+    {
+      icon: Code,
+      value: "25+",
+      label: "Tools in My Creative Kit",
+      color: "text-cyan-400",
+    },
+    {
+      icon: Coffee,
+      value: "200+",
+      label: "Late-Night Coffees",
+      color: "text-yellow-400",
+    },
+    {
+      icon: Users,
+      value: "15+",
+      label: "Team Adventures",
+      color: "text-green-400",
+    },
+  ];
 
   return (
     <section id="about" className="py-20 relative bg-[#0b0b0d] overflow-hidden">
@@ -69,20 +89,25 @@ export function About() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
             >
-              <span className="text-cyan-400 font-medium text-sm">Full-Stack Developer & Dreamer</span>
+              <span className="text-cyan-400 font-medium text-sm">
+                SaaS Backend & Systems Engineer
+              </span>
             </motion.div>
 
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
-              Turning Ideas into Reality
+              Designing the systems behind SaaS products
             </h2>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
             >
-              Hey there! I’m a full-stack developer who’s been coding for over 4 years, fueled by coffee and a passion for creating apps that make life easier and more fun. From sketching wireframes to building robust backends with React, Next.js, and Node.js, I love bringing ideas to life and solving real-world problems with a personal touch.
+              I build backend systems for SaaS products, the kind that quietly
+              power authentication, billing, permissions, and multi-tenant
+              logic. I care about correctness, scale, and making business rules
+              explicit in code.
             </motion.p>
 
             {/* Stats Bar */}
@@ -101,12 +126,24 @@ export function About() {
                   <div className="relative mb-3">
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className={`absolute inset-0 bg-gradient-to-r ${stat.color === 'text-teal-400' ? 'from-teal-500/20 to-cyan-500/20' : stat.color === 'text-cyan-400' ? 'from-cyan-500/20 to-teal-500/20' : 'from-yellow-500/20 to-green-500/20'} rounded-full blur-lg`}
+                      transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className={`absolute inset-0 bg-gradient-to-r ${
+                        stat.color === "text-teal-400"
+                          ? "from-teal-500/20 to-cyan-500/20"
+                          : stat.color === "text-cyan-400"
+                          ? "from-cyan-500/20 to-teal-500/20"
+                          : "from-yellow-500/20 to-green-500/20"
+                      } rounded-full blur-lg`}
                     />
                     <stat.icon className={`h-8 w-8 ${stat.color} relative`} />
                   </div>
-                  <div className={`text-3xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                  <div className={`text-3xl font-bold ${stat.color} mb-1`}>
+                    {stat.value}
+                  </div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
@@ -138,7 +175,9 @@ export function About() {
                     >
                       <feature.icon className="h-8 w-8 text-cyan-400" />
                     </motion.div>
-                    <h3 className={`text-xl font-bold mb-4 bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}>
+                    <h3
+                      className={`text-xl font-bold mb-4 bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}
+                    >
                       {feature.title}
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -166,13 +205,19 @@ export function About() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="text-cyan-400 text-6xl mb-4 font-serif">"</div>
+                    <div className="text-cyan-400 text-6xl mb-4 font-serif">
+                      "
+                    </div>
                     <blockquote className="text-xl md:text-2xl font-medium text-gray-200 mb-6 italic leading-relaxed">
-                      I believe coding is like storytelling, every line should spark curiosity and bring people closer to the magic of technology.
+                      Most engineering problems aren’t technical they’re unclear
+                      business rules. My job is to make those rules explicit and
+                      enforceable in code.
                     </blockquote>
                     <div className="flex items-center gap-3">
                       <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
-                      <cite className="text-gray-400 not-italic">— My Own Words</cite>
+                      <cite className="text-gray-400 not-italic">
+                        — My Own Words
+                      </cite>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -182,5 +227,5 @@ export function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

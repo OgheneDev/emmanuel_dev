@@ -1,37 +1,53 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-import { Badge } from "./ui/badge"
-import { Briefcase, Code2, Globe } from "lucide-react"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Briefcase, Code2, Globe } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function Experience() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const experiences = [
     {
-      title: "Freelance Frontend Developer",
+      title: "Freelance Full-Stack Developer",
       company: "Migho Invest Limited",
       period: "June 2024 - September 2024",
       description:
-        "Collaborated with a backend developer and UI/UX designer to build a comprehensive investment platform. Developed both the main website and an admin dashboard using React.js, implementing responsive designs and complex data visualizations.",
-      technologies: ["React", "JavaScript", "TailwindCSS", "GitHub Actions", "REST APIs", "Framer Motion"],
+        "Collaborated on building a scalable investment platform, contributing to API integrations, data flow architecture, and admin dashboards. Implemented secure client-server communication and optimized backend queries to improve performance.",
+      technologies: [
+        "React",
+        "JavaScript",
+        "TailwindCSS",
+        "REST APIs",
+        "Framer Motion",
+        "GitHub Actions",
+        "Database Design",
+      ],
       icon: Code2,
       gradient: "from-cyan-400 to-teal-400",
     },
     {
-      title: "Freelance Frontend Developer",
+      title: "Freelance Full-Stack Developer",
       company: "Rheel Estate Limited",
       period: "February 2025 - April 2025",
       description:
-        "Led the frontend development of a real estate platform, creating both the main website and an admin panel for managing properties. Worked closely with the backend team to integrate APIs and implement real-time features. Improved site performance and SEO metrics significantly.",
-      technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "REST APIs"],
+        "Led frontend and backend integration for a real estate platform. Designed RESTful APIs, collaborated on database schema optimization, and implemented real-time features for property management dashboards.",
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "REST APIs",
+        "Framer Motion",
+        "Database Design",
+      ],
       icon: Globe,
       gradient: "from-teal-400 to-blue-400",
     },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,12 +55,16 @@ export function Experience() {
       opacity: 1,
       transition: { staggerChildren: 0.3, delayChildren: 0.2 },
     },
-  }
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   const badgeVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -53,7 +73,7 @@ export function Experience() {
       scale: 1,
       transition: { delay: i * 0.08, duration: 0.4 },
     }),
-  }
+  };
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden">
@@ -67,11 +87,11 @@ export function Experience() {
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
-              Professional Experience
+              Professional Experience & Projects
             </h2>
             <motion.div
               initial={{ width: 0 }}
-              animate={isInView ? { width: "120px" } : {}}
+              animate={isInView ? { width: "140px" } : {}}
               transition={{ delay: 0.5, duration: 0.8 }}
               className="h-1 bg-gradient-to-r from-cyan-400 to-teal-400 mx-auto rounded-full"
             />
@@ -106,10 +126,14 @@ export function Experience() {
                   <CardHeader className="pb-3">
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                       <div>
-                        <CardTitle className={`text-xl md:text-2xl font-semibold bg-gradient-to-r ${exp.gradient} bg-clip-text text-transparent`}>
+                        <CardTitle
+                          className={`text-xl md:text-2xl font-semibold bg-gradient-to-r ${exp.gradient} bg-clip-text text-transparent`}
+                        >
                           {exp.title}
                         </CardTitle>
-                        <p className="text-lg text-gray-300 font-medium mt-1">{exp.company}</p>
+                        <p className="text-lg text-gray-300 font-medium mt-1">
+                          {exp.company}
+                        </p>
                       </div>
                       <Badge
                         variant="secondary"
@@ -118,7 +142,9 @@ export function Experience() {
                         {exp.period}
                       </Badge>
                     </div>
-                    <div className={`h-0.5 bg-gradient-to-r ${exp.gradient} w-20 rounded-full mt-3`} />
+                    <div
+                      className={`h-0.5 bg-gradient-to-r ${exp.gradient} w-20 rounded-full mt-3`}
+                    />
                   </CardHeader>
 
                   <CardContent>
@@ -165,5 +191,5 @@ export function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }

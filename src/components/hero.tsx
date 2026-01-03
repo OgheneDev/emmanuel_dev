@@ -9,7 +9,9 @@ import { useState, useEffect } from "react";
 export function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [particles, setParticles] = useState<{ left: string; top: string }[]>([]);
+  const [particles, setParticles] = useState<{ left: string; top: string }[]>(
+    []
+  );
   const fullText = "Emmanuel Oghene";
   const typingSpeed = 100;
 
@@ -68,16 +70,19 @@ export function Hero() {
   };
 
   const skills = [
-    { name: "React", color: "from-cyan-400 to-blue-400" },
-    { name: "Next.js", color: "from-gray-300 to-gray-500" },
-    { name: "TypeScript", color: "from-blue-400 to-blue-600" },
     { name: "Node.js", color: "from-green-400 to-green-600" },
-    { name: "MongoDB", color: "from-green-500 to-green-700" },
-    { name: "Express", color: "from-gray-400 to-gray-600" },
+    { name: "PostgreSQL", color: "from-blue-400 to-blue-600" },
+    { name: "REST APIs", color: "from-cyan-400 to-teal-400" },
+    { name: "Auth & RBAC", color: "from-purple-400 to-purple-600" },
+    { name: "Multi-Tenancy", color: "from-orange-400 to-orange-600" },
+    { name: "Billing Systems", color: "from-pink-400 to-rose-500" },
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 pb-10 relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center pt-20 pb-10 relative overflow-hidden"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 ">
         <motion.div
@@ -112,7 +117,9 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
             >
               <Sparkles className="w-4 h-4 text-cyan-400" />
-              <span className="text-cyan-400 font-medium text-sm">Available for opportunities</span>
+              <span className="text-cyan-400 font-medium text-sm">
+                Focused on SaaS backend & system design
+              </span>
             </motion.div>
           </motion.div>
 
@@ -135,7 +142,7 @@ export function Hero() {
               transition={{ delay: 1.5, duration: 0.8 }}
               className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white"
             >
-              Full-Stack Developer
+              SaaS Backend & Systems Engineer
             </motion.h2>
 
             <motion.p
@@ -144,11 +151,9 @@ export function Hero() {
               transition={{ delay: 1.8, duration: 0.8 }}
               className="text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
             >
-              I craft{" "}
-              <span className="text-cyan-400 font-semibold">performant</span> and{" "}
-              <span className="text-teal-400 font-semibold">scalable</span> web applications
-              from database to interface, turning ideas into reality with clean code and modern
-              technologies.
+              I design and build SaaS backends where business rules shape
+              architecture, from authentication and billing to RBAC, audit logs,
+              and multi-tenant systems.
             </motion.p>
           </motion.div>
 
@@ -166,7 +171,9 @@ export function Hero() {
                 whileHover={{ scale: 1.1, y: -5 }}
                 className="group relative cursor-pointer"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-20 blur-lg group-hover:opacity-40 transition-opacity rounded-full`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-20 blur-lg group-hover:opacity-40 transition-opacity rounded-full`}
+                />
                 <div className="relative px-4 py-2 bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-full group-hover:border-cyan-500/50 transition-all">
                   <span className="text-gray-300 text-sm font-medium group-hover:text-cyan-300 transition-colors">
                     {skill.name}
@@ -213,9 +220,21 @@ export function Hero() {
             className="flex justify-center space-x-6 pt-4"
           >
             {[
-              { href: "https://github.com/OgheneDev", icon: Github, label: "GitHub" },
-              { href: "https://www.linkedin.com/in/emmanuel-oghene-0242182ab", icon: Linkedin, label: "LinkedIn" },
-              { href: "mailto:emmanueloghene72@gmail.com", icon: Mail, label: "Email" },
+              {
+                href: "https://github.com/OgheneDev",
+                icon: Github,
+                label: "GitHub",
+              },
+              {
+                href: "https://www.linkedin.com/in/emmanuel-oghene-0242182ab",
+                icon: Linkedin,
+                label: "LinkedIn",
+              },
+              {
+                href: "mailto:emmanueloghene72@gmail.com",
+                icon: Mail,
+                label: "Email",
+              },
             ].map((social, index) => (
               <motion.div
                 key={social.label}
@@ -228,7 +247,9 @@ export function Hero() {
                   className="group relative"
                   aria-label={social.label}
                   target={social.label !== "Email" ? "_blank" : undefined}
-                  rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                  rel={
+                    social.label !== "Email" ? "noopener noreferrer" : undefined
+                  }
                 >
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 5 }}
@@ -261,7 +282,11 @@ export function Hero() {
               <div className="w-6 h-10 border-2 border-gray-600 rounded-full p-1">
                 <motion.div
                   animate={{ y: [0, 12, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="w-1.5 h-3 bg-cyan-400 rounded-full mx-auto"
                 />
               </div>

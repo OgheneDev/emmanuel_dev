@@ -1,25 +1,46 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const socialLinks = [
-    { href: "https://github.com/OgheneDev", icon: Github, label: "GitHub", color: "hover:text-cyan-400" },
-    { href: "https://www.linkedin.com/in/emmanuel-oghene-0242182ab", icon: Linkedin, label: "LinkedIn", color: "hover:text-cyan-400" },
-    { href: "mailto:emmanueloghene72@gmail.com", icon: Mail, label: "Email", color: "hover:text-cyan-400" },
-  ]
+    {
+      href: "https://github.com/OgheneDev",
+      icon: Github,
+      label: "GitHub",
+      color: "hover:text-cyan-400",
+    },
+    {
+      href: "https://www.linkedin.com/in/emmanuel-oghene-0242182ab",
+      icon: Linkedin,
+      label: "LinkedIn",
+      color: "hover:text-cyan-400",
+    },
+    {
+      href: "https://twitter.com/oghene_emma",
+      icon: Twitter,
+      label: "Twitter",
+      color: "hover:text-cyan-400",
+    },
+    {
+      href: "mailto:emmanueloghene72@gmail.com",
+      icon: Mail,
+      label: "Email",
+      color: "hover:text-cyan-400",
+    },
+  ];
 
   const navLinks = [
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
-  ]
+  ];
 
   return (
     <footer className="relative bg-[#0b0b0d] border-t border-gray-800/50 overflow-hidden">
@@ -45,7 +66,8 @@ export function Footer() {
                   Emmanuel Oghene
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Full-Stack Developer building scalable web solutions that make a difference.
+                  SaaS Backend Developer building robust systems, scalable APIs,
+                  and billing engines for modern web platforms.
                 </p>
               </motion.div>
             </div>
@@ -94,11 +116,17 @@ export function Footer() {
                         className="group relative"
                         aria-label={social.label}
                         target={social.label !== "Email" ? "_blank" : undefined}
-                        rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                        rel={
+                          social.label !== "Email"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                       >
                         <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="relative p-3 bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-full group-hover:border-cyan-500/50 transition-all">
-                          <social.icon className={`h-5 w-5 text-gray-400 ${social.color} transition-colors`} />
+                          <social.icon
+                            className={`h-5 w-5 text-gray-400 ${social.color} transition-colors`}
+                          />
                         </div>
                       </Link>
                     </motion.div>
@@ -130,14 +158,18 @@ export function Footer() {
             </p>
 
             <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <span>Built with</span>
+              <span>Building scalable SaaS systems with</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
                 <Heart className="h-4 w-4 text-red-500 fill-red-500" />
               </motion.div>
-              <span>using Next.js & Tailwind CSS</span>
+              <span>using Node.js, TypeScript & PostgreSQL</span>
             </div>
           </motion.div>
         </div>
@@ -157,5 +189,5 @@ export function Footer() {
         <ArrowUp className="h-5 w-5 text-white group-hover:animate-bounce" />
       </motion.button>
     </footer>
-  )
+  );
 }
