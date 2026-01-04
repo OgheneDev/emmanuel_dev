@@ -3,19 +3,22 @@ import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
 
-const ubuntu = Ubuntu({ weight: ["300", "400", "500", "700"], subsets: ["latin"] });
+const ubuntu = Ubuntu({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "Oghene Emmanuel - Fullstack Developer",
+  title: "Oghene Emmanuel – Backend-Focused Fullstack Engineer",
   description:
-    "Portfolio Website of Oghene Emmanuel showcasing fullstack development skills and projects with expertise in frontend and backend technologies",
+    "Portfolio of Oghene Emmanuel, a backend-focused fullstack engineer building SaaS systems, scalable APIs, and well-structured web applications.",
   keywords:
-    "fullstack developer, web developer, React, Next.js, Node.js, portfolio",
+    "backend engineer, fullstack engineer, SaaS backend, system design, Node.js, TypeScript, PostgreSQL, APIs, React, Next.js",
   authors: [{ name: "Oghene Emmanuel" }],
   openGraph: {
-    title: "Oghene Emmanuel - Fullstack Developer",
+    title: "Oghene Emmanuel – Backend-Focused Fullstack Engineer",
     description:
-      "Portfolio Website of Oghene Emmanuel showcasing fullstack development skills and projects with expertise in frontend and backend technologies",
+      "Backend-focused fullstack engineer building SaaS systems, scalable APIs, and production-ready web applications.",
     type: "website",
   },
 };
