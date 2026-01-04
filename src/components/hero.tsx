@@ -118,7 +118,7 @@ export function Hero() {
             >
               <Sparkles className="w-4 h-4 text-cyan-400" />
               <span className="text-cyan-400 font-medium text-sm">
-                Focused on SaaS backend & system design
+                Backend-focused engineer exploring SaaS systems & architecture
               </span>
             </motion.div>
           </motion.div>
@@ -142,7 +142,7 @@ export function Hero() {
               transition={{ delay: 1.5, duration: 0.8 }}
               className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white"
             >
-              SaaS Backend & Systems Engineer
+              Backend-Focused Software Engineer
             </motion.h2>
 
             <motion.p
@@ -151,9 +151,10 @@ export function Hero() {
               transition={{ delay: 1.8, duration: 0.8 }}
               className="text-sm text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
             >
-              I design and build SaaS backends where business rules shape
-              architecture, from authentication and billing to RBAC, audit logs,
-              and multi-tenant systems.
+              I build backend systems with a strong focus on architecture, data
+              modeling, and authentication. Lately, I’ve been going deeper into
+              SaaS-style systems, where business rules shape APIs, permissions,
+              and long-term scalability.
             </motion.p>
           </motion.div>
 

@@ -21,18 +21,18 @@ export function About() {
     },
     {
       icon: Zap,
-      title: "SaaS Infrastructure & Workflows",
+      title: "Backend Infrastructure & Workflows",
       description:
-        "I build core SaaS infrastructure like authentication, billing flows, audit logs, and background processes that support real production workloads.",
+        "I build backend infrastructure like authentication flows, background jobs, audit trails, and internal tooling that support real production workloads and evolving product requirements.",
       gradient: "from-teal-400 to-cyan-300",
       bgColor: "bg-teal-500/10",
       borderColor: "border-teal-500/20",
     },
     {
       icon: Users,
-      title: "Multi-Tenant & Access Control",
+      title: "Access Control & Permission Systems",
       description:
-        "I implement multi-tenant architectures with clear boundaries using RBAC and role-based permissions to ensure secure and predictable access control.",
+        "I design permission systems using RBAC and clear role boundaries, with experience modeling multi-tenant patterns where isolation and predictability matter.",
       gradient: "from-cyan-400 to-teal-400",
       bgColor: "bg-cyan-500/10",
       borderColor: "border-cyan-500/20",
@@ -90,12 +90,12 @@ export function About() {
               className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
             >
               <span className="text-cyan-400 font-medium text-sm">
-                SaaS Backend & Systems Engineer
+                Backend & Systems Engineer
               </span>
             </motion.div>
 
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
-              Designing the systems behind SaaS products
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
+              Designing the systems behind modern web products
             </h2>
 
             <motion.p

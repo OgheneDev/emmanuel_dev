@@ -66,8 +66,8 @@ export function Footer() {
                   Emmanuel Oghene
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  SaaS Backend Developer building robust systems, scalable APIs,
-                  and billing engines for modern web platforms.
+                  Backend-focused engineer building robust systems, scalable
+                  APIs, and production-ready backend infrastructure.
                 </p>
               </motion.div>
             </div>
@@ -158,7 +158,7 @@ export function Footer() {
             </p>
 
             <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <span>Building scalable SaaS systems with</span>
+              <span>Building backend systems with</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{
@@ -169,7 +169,7 @@ export function Footer() {
               >
                 <Heart className="h-4 w-4 text-red-500 fill-red-500" />
               </motion.div>
-              <span>using Node.js, TypeScript & PostgreSQL</span>
+              <span>Node.js, TypeScript & PostgreSQL</span>
             </div>
           </motion.div>
         </div>
