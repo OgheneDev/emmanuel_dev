@@ -95,7 +95,8 @@ export function About() {
             </motion.div>
 
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
-              Designing the systems behind modern web products
+              Designing the systems
+              <br /> behind modern web products
             </h2>
 
             <motion.p

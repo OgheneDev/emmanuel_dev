@@ -172,7 +172,7 @@ export function Skills() {
             className="text-center mt-20"
           >
             <p className="text-gray-300 text-lg mb-6">
-              Interested in scalable SaaS systems?
+              Interested in scalable systems?
             </p>
             <Link href="#contact">
               <motion.button
