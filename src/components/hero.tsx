@@ -1,7 +1,14 @@
 "use client";
 
 import { Button } from "./ui/button";
-import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowRight,
+  Sparkles,
+  Twitter,
+} from "lucide-react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -235,6 +242,11 @@ export function Hero() {
                 href: "mailto:emmanueloghene72@gmail.com",
                 icon: Mail,
                 label: "Email",
+              },
+              {
+                href: "https://twitter.com/oghene_emma",
+                icon: Twitter,
+                label: "Twitter",
               },
             ].map((social, index) => (
               <motion.div

@@ -1,90 +1,169 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { Button } from "./ui/button"
-import { Card, CardContent } from "./ui/card"
-import { Input } from "./ui/input"
-import { Textarea } from "./ui/textarea"
-import { Mail, MapPin, Phone, Loader2, Send, MessageCircle } from "lucide-react"
-import { motion, useInView } from "framer-motion"
-import { FaWhatsapp } from "react-icons/fa"
-import { Toast } from "./ui/toast"
+import { useState, useRef } from "react";
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Loader2,
+  Send,
+  MessageCircle,
+} from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
+import { Toast } from "./ui/toast";
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  });
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-  const [toastType, setToastType] = useState<'success' | 'error'>('success');
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState<"success" | "error">("success");
+
+  // Validate form fields
+  const validateForm = () => {
+    const errors = {
+      name: "",
+      email: "",
+      message: "",
+    };
+    let isValid = true;
+
+    // Name validation
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+
+    // Validate form before submission
+    if (!validateForm()) {
+      setToastMessage("Please fill in all required fields correctly");
+      setToastType("error");
+      setShowToast(true);
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
+      });
 
-      if (!response.ok) throw new Error('Failed to send message')
+      if (!response.ok) throw new Error("Failed to send message");
 
-      setFormData({ name: "", email: "", message: "" })
-      setToastMessage('Your message is on its way!');
+      setFormData({ name: "", email: "", message: "" });
+      // Clear errors on successful submission
+      setFormErrors({ name: "", email: "", message: "" });
+
+      setToastMessage("Your message is on its way!");
       setToastType("success");
       setShowToast(true);
     } catch (error) {
-      setToastMessage('Something went wrong. Try again?');
+      setToastMessage("Something went wrong. Try again?");
       setToastType("error");
       setShowToast(true);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error for the field being edited
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  // Check if form is valid for button disabling
+  const isFormValid = () => {
+    return (
+      formData.name.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.message.trim() !== "" &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    );
+  };
 
   const contacts = [
-    { 
-      Icon: Mail, 
-      text: "emmanueloghene72@gmail.com", 
+    {
+      Icon: Mail,
+      text: "emmanueloghene72@gmail.com",
       href: "mailto:emmanueloghene72@gmail.com",
       gradient: "from-cyan-400 to-teal-400",
-      label: "Email"
+      label: "Email",
     },
-    { 
-      Icon: Phone, 
-      text: "+234 916 247 5151", 
+    {
+      Icon: Phone,
+      text: "+234 916 247 5151",
       href: "tel:+2349162475151",
       gradient: "from-teal-400 to-cyan-300",
-      label: "Phone"
+      label: "Phone",
     },
-    { 
-      Icon: FaWhatsapp, 
-      text: "+234 807 192 0976", 
+    {
+      Icon: FaWhatsapp,
+      text: "+234 807 192 0976",
       href: "https://wa.me/2348071920976",
       gradient: "from-green-400 to-green-600",
-      label: "WhatsApp"
+      label: "WhatsApp",
     },
-    { 
-      Icon: MapPin, 
-      text: "Benin City, Nigeria", 
+    {
+      Icon: MapPin,
+      text: "Benin City, Nigeria",
       gradient: "from-cyan-400 to-teal-400",
-      label: "Location"
+      label: "Location",
     },
-  ]
+  ];
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden bg-[#0b0b0d]">
+    <section
+      id="contact"
+      className="py-20 relative overflow-hidden bg-[#0b0b0d]"
+    >
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -129,20 +208,23 @@ export function Contact() {
               className="inline-flex items-center gap-2 mb-4 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30"
             >
               <MessageCircle className="w-4 h-4 text-cyan-400" />
-              <span className="text-cyan-400 font-medium text-sm">Let's Connect</span>
+              <span className="text-cyan-400 font-medium text-sm">
+                Let's Connect
+              </span>
             </motion.div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-300 bg-clip-text text-transparent">
               Get In Touch
             </h2>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-gray-400 text-lg max-w-2xl mx-auto"
             >
-              Have a project in mind or just want to chat? I'd love to hear from you.
+              Have a project in mind or just want to chat? I'd love to hear from
+              you.
             </motion.p>
           </motion.div>
 
@@ -167,17 +249,27 @@ export function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={
+                        item.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        item.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="block group"
                     >
                       <Card className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_20px_-5px_rgba(34,211,238,0.3)]">
                         <CardContent className="p-5 mt-5 flex items-center gap-4">
-                          <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <div
+                            className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                          >
                             <item.Icon className="h-5 w-5 text-white" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-xs text-gray-400 mb-1">{item.label}</p>
+                            <p className="text-xs text-gray-400 mb-1">
+                              {item.label}
+                            </p>
                             <p className="text-gray-200 font-medium text-sm group-hover:text-cyan-300 transition-colors truncate">
                               {item.text}
                             </p>
@@ -188,11 +280,15 @@ export function Contact() {
                   ) : (
                     <Card className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50">
                       <CardContent className="p-5 mt-5 flex items-center gap-4">
-                        <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg`}>
+                        <div
+                          className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg`}
+                        >
                           <item.Icon className="h-5 w-5 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs text-gray-400 mb-1">{item.label}</p>
+                          <p className="text-xs text-gray-400 mb-1">
+                            {item.label}
+                          </p>
                           <p className="text-gray-200 font-medium text-sm truncate">
                             {item.text}
                           </p>
@@ -222,14 +318,14 @@ export function Contact() {
                     </p>
                   </div>
 
-                  <div className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 0.5 }}
                     >
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Your Name
+                        Your Name *
                       </label>
                       <Input
                         name="name"
@@ -237,9 +333,17 @@ export function Contact() {
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={handleChange}
-                        required
-                        className="bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300"
+                        className={`bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300 ${
+                          formErrors.name
+                            ? "border-red-500 focus:border-red-500"
+                            : ""
+                        }`}
                       />
+                      {formErrors.name && (
+                        <p className="mt-1 text-sm text-red-400">
+                          {formErrors.name}
+                        </p>
+                      )}
                     </motion.div>
 
                     <motion.div
@@ -248,7 +352,7 @@ export function Contact() {
                       transition={{ delay: 0.6 }}
                     >
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Email Address
+                        Email Address *
                       </label>
                       <Input
                         name="email"
@@ -256,9 +360,17 @@ export function Contact() {
                         placeholder="john@example.com"
                         value={formData.email}
                         onChange={handleChange}
-                        required
-                        className="bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300"
+                        className={`bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300 ${
+                          formErrors.email
+                            ? "border-red-500 focus:border-red-500"
+                            : ""
+                        }`}
                       />
+                      {formErrors.email && (
+                        <p className="mt-1 text-sm text-red-400">
+                          {formErrors.email}
+                        </p>
+                      )}
                     </motion.div>
 
                     <motion.div
@@ -267,7 +379,7 @@ export function Contact() {
                       transition={{ delay: 0.7 }}
                     >
                       <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Message
+                        Message *
                       </label>
                       <Textarea
                         name="message"
@@ -275,9 +387,17 @@ export function Contact() {
                         rows={6}
                         value={formData.message}
                         onChange={handleChange}
-                        required
-                        className="bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300 resize-none"
+                        className={`bg-gray-900/50 border-gray-600 focus:border-cyan-500 text-white placeholder:text-gray-500 transition-all duration-300 resize-none ${
+                          formErrors.message
+                            ? "border-red-500 focus:border-red-500"
+                            : ""
+                        }`}
                       />
+                      {formErrors.message && (
+                        <p className="mt-1 text-sm text-red-400">
+                          {formErrors.message}
+                        </p>
+                      )}
                     </motion.div>
 
                     <motion.div
@@ -288,9 +408,8 @@ export function Contact() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <Button
-                        type="button"
-                        onClick={handleSubmit}
-                        disabled={isLoading}
+                        type="submit"
+                        disabled={isLoading || !isFormValid()}
                         className="w-full h-12 text-sm cursor-pointer bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isLoading ? (
@@ -306,7 +425,7 @@ export function Contact() {
                         )}
                       </Button>
                     </motion.div>
-                  </div>
+                  </form>
                 </CardContent>
               </Card>
             </motion.div>
@@ -328,6 +447,7 @@ export function Contact() {
                 Drop me a line directly
               </a>
             </p>
+            <p className="text-gray-500 text-xs mt-2">* Required fields</p>
           </motion.div>
         </div>
       </div>
@@ -341,5 +461,5 @@ export function Contact() {
         duration={3000}
       />
     </section>
-  )
+  );
 }
