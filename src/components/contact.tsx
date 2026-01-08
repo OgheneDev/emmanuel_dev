@@ -153,7 +153,7 @@ export function Contact() {
     },
     {
       Icon: MapPin,
-      text: "Benin City, Nigeria",
+      text: "Lagos, Nigeria",
       gradient: "from-cyan-400 to-teal-400",
       label: "Location",
     },
