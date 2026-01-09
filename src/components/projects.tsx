@@ -46,7 +46,7 @@ export function Projects() {
       title: "SaaS Billing Engine",
       description:
         "A production-oriented SaaS billing and subscription engine built to explore real-world constraints such as organizations, RBAC, audit logs, usage-based billing, and extensible payment workflows. Designed with long-term scalability and multi-tenant architecture in mind.",
-      image: "/placeholder.svg",
+      image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1767995181/Tenon___Precision_Billing_Engine_-_Google_Chrome_09_01_2026_22_40_02_dqo72u.png",
       technologies: [
         "Node.js",
         "TypeScript",
