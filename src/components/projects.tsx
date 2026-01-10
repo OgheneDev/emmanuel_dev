@@ -46,7 +46,8 @@ export function Projects() {
       title: "SaaS Billing Engine",
       description:
         "A production-oriented SaaS billing and subscription engine built to explore real-world constraints such as organizations, RBAC, audit logs, usage-based billing, and extensible payment workflows. Designed with long-term scalability and multi-tenant architecture in mind.",
-      image: "https://res.cloudinary.com/dgc8cd67w/image/upload/v1767995181/Tenon___Precision_Billing_Engine_-_Google_Chrome_09_01_2026_22_40_02_dqo72u.png",
+      image:
+        "https://res.cloudinary.com/dgc8cd67w/image/upload/v1767995181/Tenon___Precision_Billing_Engine_-_Google_Chrome_09_01_2026_22_40_02_dqo72u.png",
       technologies: [
         "Node.js",
         "TypeScript",
@@ -57,27 +58,6 @@ export function Projects() {
         "Audit Logs",
       ],
       status: "in-progress",
-    },
-    {
-      title: "Task Management System",
-      description:
-        "A SaaS-style task management system featuring authentication, user-scoped task ownership, CRUD workflows, and event-driven email notifications. Built to model backend business logic, data consistency, and user lifecycle flows.",
-      image:
-        "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748602298/Annotation_2025-05-30_115125_suvipj.png",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Nodemailer",
-      ],
-      liveUrl: "https://task-app-frontend-rho.vercel.app",
-      repos: {
-        frontend: "https://github.com/OgheneDev/task-app-frontend",
-        backend: "https://github.com/OgheneDev/task-app-backend",
-      },
-      status: "completed",
     },
     {
       title: "FlowChat",
@@ -118,6 +98,27 @@ export function Projects() {
       repos: {
         frontend: "https://github.com/OgheneDev/technest-frontend",
         backend: "https://github.com/OgheneDev/technest-backend",
+      },
+      status: "completed",
+    },
+    {
+      title: "Task Management System",
+      description:
+        "A SaaS-style task management system featuring authentication, user-scoped task ownership, CRUD workflows, and event-driven email notifications. Built to model backend business logic, data consistency, and user lifecycle flows.",
+      image:
+        "https://res.cloudinary.com/dgc8cd67w/image/upload/v1748602298/Annotation_2025-05-30_115125_suvipj.png",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Nodemailer",
+      ],
+      liveUrl: "https://task-app-frontend-rho.vercel.app",
+      repos: {
+        frontend: "https://github.com/OgheneDev/task-app-frontend",
+        backend: "https://github.com/OgheneDev/task-app-backend",
       },
       status: "completed",
     },
